@@ -16,10 +16,10 @@
 * Username
 * Password
 * Avatar
-* **<<Teacher related>>**
+* **Teacher related**
   * Videos
   * TestsCreated
-* **<<Student Related>>**
+* **Student Related**
   * TestsTaken
 * <<EMPTY>>
 
