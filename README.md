@@ -9,7 +9,7 @@
 * admin
 * teacher
 * student
-a
+
 #### User
 
 * Email
@@ -21,11 +21,12 @@ a
   * TestsCreated
 * **Student Related**
   * TestsTaken
+  * Grades
 * 
 
 #### Video
 
-* File
+* File / Path to File
 * Name
 * UploadedBy
 * UploadedOn
@@ -53,6 +54,13 @@ a
 * CreatedOn
 * StudentsAllowed
 * 
+
+#### Grade
+
+* Value
+* RelatedTest
+* RelatedStudent
+* RelatedExaminer
 
 ### Services
 
