@@ -32,6 +32,7 @@ Teachers have:
  * *Articles*
 
 Teachers can do everything a normal user can do, but they can also add tests and authorize students to participate. *They can also add articles.*
+
 ------
 
 Students can add works on their profile. Works have:
@@ -58,6 +59,7 @@ Teachers can add articles, which are publicly visible. Articles have:
 
  * RelatedVideos
  * RelatedArticles
+ 
 ------
 Teachers can create Tests and add Students to participate. Tests have:
 
