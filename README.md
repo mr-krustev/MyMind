@@ -23,7 +23,7 @@ Students have:
  * Specialty - between 2 and 20 symbols
  * *Works*
 
-Students can do everything a normal user can do, but they can also take part in Tests to which they are authorised. *They can also add personal publications.*
+Students can do everything a normal user can do, but they can also take part in Tests to which they are authorised. *They can also add personal works.*
 
 Teachers have:
  * Videos
@@ -35,7 +35,7 @@ Teachers can do everything a normal user can do, but they can also add tests and
 
 ------
 
-Students can add works on their profile. Works have:
+Students can add **works** on their profile. Works have:
 
  * Title(req) - between 2 and 20 symbols
  * Topic(req)
@@ -47,7 +47,7 @@ Students can add works on their profile. Works have:
 
  * Likes
 
-Teachers can add articles, which are publicly visible. Articles have:
+Teachers can add **articles**, which are publicly visible. Articles have:
 
  * Title(req) - between 2 and 20 symbols
  * Topic(req)
@@ -61,7 +61,7 @@ Teachers can add articles, which are publicly visible. Articles have:
  * RelatedArticles
  
 ------
-Teachers can create Tests and add Students to participate. Tests have:
+Teachers can create **Tests** and **add Students** to participate. Tests have:
 
  * Topic(req)
  * CreatedBy(req)
@@ -69,13 +69,15 @@ Teachers can create Tests and add Students to participate. Tests have:
  * StudentsAllowed
  * RelatedQuestions
 
-Students can take tests and receive grades. Grades have:
+Students can take tests and receive **grades**. Grades have:
 
  * Value(req) - between 0 and 100. (percentage based on correct answers/questions)
  * RelatedTest(req)
  * RelatedStudent(req)
  * RelatedExaminer(req) - the creator of the Test
+
 ------
+
 
 
 ## Data
