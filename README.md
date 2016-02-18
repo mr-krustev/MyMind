@@ -13,8 +13,9 @@ All users have:
  * FirstName - between 2 and 20 symbols
  * LastName - between 2 and 20 symbols
  * University - between 2 and 20 symbols
+ * Likes
 
-Normal users can review articles, search through all articles, basically they have "read permissions". 
+Normal users can review articles, search through all articles, basically they have "read permissions". Can also like works.
 
 Students have:
  * TestsTaken
@@ -78,7 +79,16 @@ Students can take tests and receive **grades**. Grades have:
 
 ------
 
+##### Administrator Area
 
+Administrators can:
+
+ * Edit/Remove Users
+ * Add/Edit/Remove Topics
+ * Add/Edit/Remove Articles
+ * Add/Edit/Remove Works
+ * Add/Edit/Remove Videos
+ * Add/Edit/Remove Tests
 
 ## Data
 
@@ -138,12 +148,17 @@ Students can take tests and receive **grades**. Grades have:
 #### Works extends Publication
  * Likes
 
+#### Like
+ * Value (-1 or 1) 
+ * User
+ * RelatedWork
+
 #### Video
 
-* File / Path to File
-* Name
-* UploadedBy
-* UploadedOn
+* YoutubeURL
+* Title
+* CreatedBy
+* CreatedOn
 * RelatedArticles
 
 #### Test
@@ -171,11 +186,6 @@ Students can take tests and receive **grades**. Grades have:
  * RelatedExaminer
 
 ### Services
-
-* UsersServices
-* ArticlesServices
-* TestsServices
-* VideosServices
 
 ## Web
 
