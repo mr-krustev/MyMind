@@ -31,7 +31,7 @@
 
         public string LastName { get; set; }
 
-        public int UniversityId { get; set; }
+        public int? UniversityId { get; set; }
 
         public virtual University University { get; set; }
 

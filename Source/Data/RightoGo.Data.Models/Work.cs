@@ -16,7 +16,7 @@
 
         [Required]
         [MinLength(2)]
-        [MaxLength(20)]
+        [MaxLength(40)]
         public string Title { get; set; }
 
         public Topic Topic { get; set; }

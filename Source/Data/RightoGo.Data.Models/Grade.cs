@@ -7,7 +7,7 @@
     public class Grade : BaseModel<int>
     {
         [Required]
-        [Range(0,100)]
+        [Range(0, 100)]
         public int Value { get; set; }
 
         [Required]

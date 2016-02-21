@@ -14,8 +14,7 @@
 
         [Required]
         public Topic Topic { get; set; }
-
-        [Required]
+        
         public string CreatedById { get; set; }
 
         public virtual User CreatedBy { get; set; }

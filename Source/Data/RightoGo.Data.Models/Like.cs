@@ -1,6 +1,7 @@
 ﻿namespace RightoGo.Data.Models
 {
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     using Common.Models;
 
@@ -11,8 +12,7 @@
 
         public virtual User Voter { get; set; }
 
-        [Required]
-        public int WorkId { get; set; }
+        public int? WorkId { get; set; }
 
         public virtual Work Work { get; set; }
 
