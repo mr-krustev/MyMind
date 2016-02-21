@@ -14,18 +14,16 @@
     {
         public Configuration()
         {
-            this.AutomaticMigrationsEnabled = true;
-            this.AutomaticMigrationDataLossAllowed = true;
+            this.AutomaticMigrationsEnabled = false;
+            this.AutomaticMigrationDataLossAllowed = false;
         }
 
         protected override void Seed(ApplicationDbContext context)
         {
             this.GenerateAdmin(context);
             var seedData = new SeedData();
-            seedData.GenerateData(context);
+                seedData.GenerateData(context);
         }
-
-        
 
         private void GenerateAdmin(ApplicationDbContext context)
         {

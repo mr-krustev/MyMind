@@ -27,26 +27,75 @@
 
         public void GenerateData(ApplicationDbContext context)
         {
+            if (context.Topics.Any() && context.University.Any() && (context.Users.Count() > 1)
+                && context.Articles.Any() && context.Works.Any())
+            {
+                return;
+            }
+
             this.userStore = new UserStore<User>(context);
             this.userManager = new UserManager<User>(this.userStore);
 
-            this.topics = this.GenerateTopics();
-            this.topics.ForEach(t => context.Topics.Add(t));
-            this.universities = this.GenerateUniversities();
-            this.universities.ForEach(u => context.University.Add(u));
-            context.SaveChanges();
+            if (!context.Topics.Any())
+            {
+                this.topics = this.GenerateTopics();
+                this.topics.ForEach(t => context.Topics.Add(t));
+                context.SaveChanges();
+            }
+            else
+            {
+                this.topics = context.Topics.ToList();
+            }
 
-            this.users = this.GenerateUsers();
-            this.AddUsersToRoles(context);
-            context.SaveChanges();
+            if (!context.University.Any())
+            {
+                this.universities = this.GenerateUniversities();
+                this.universities.ForEach(u => context.University.Add(u));
+                context.SaveChanges();
+            }
+            else
+            {
+                this.universities = context.University.ToList();
+            }
 
-            this.articles = this.GenerateArticles(context);
-            this.articles.ForEach(a => context.Articles.Add(a));
-            context.SaveChanges();
+            if (!(context.Users.Count() > 1))
+            {
+                this.users = this.GenerateUsers();
+                this.users.ForEach(u => context.Users.Add(u));
+                context.SaveChanges();
+            }
+            else
+            {
+                this.users = context.Users.ToList();
+            }
 
-            this.works = this.GenerateWorks(context);
-            this.works.ForEach(w => context.Works.Add(w));
-            context.SaveChanges();
+            if (!(context.Roles.Count() > 1))
+            {
+                this.AddUsersToRoles(context);
+                context.SaveChanges();
+            }
+
+            if (!context.Articles.Any())
+            {
+                this.articles = this.GenerateArticles(context);
+                this.articles.ForEach(a => context.Articles.Add(a));
+                context.SaveChanges();
+            }
+            else
+            {
+                this.articles = context.Articles.ToList();
+            }
+
+            if (!context.Works.Any())
+            {
+                this.works = this.GenerateWorks(context);
+                this.works.ForEach(w => context.Works.Add(w));
+                context.SaveChanges();
+            }
+            else
+            {
+                this.works = context.Works.ToList();
+            }
 
             // TODO: Add more seed.
 
@@ -59,7 +108,7 @@
 
         private List<Work> GenerateWorks(ApplicationDbContext context)
         {
-            var students = context.Users.ToList().Where(u => this.userManager.IsInRole(u.Id, TeacherRoleName)).ToList();
+            var students = context.Users.ToList().Where(u => this.userManager.IsInRole(u.Id, StudentRoleName)).ToList();
             var generatedWorks = new List<Work>();
 
             foreach (var student in students)
@@ -155,6 +204,7 @@
                 {
                     UserName = "user" + i + "@cool.com",
                     Email = "user" + i + "@cool.com",
+                    PasswordHash = userManager.PasswordHasher.HashPassword("user" + i + "pass")
                 };
 
                 // These users later on will have roles Student(first 5) and Teacher(last one)
@@ -164,7 +214,6 @@
                 }
 
                 generatedUsers.Add(user);
-                this.userManager.Create(user, "user" + i);
             }
 
             return generatedUsers;

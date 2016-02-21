@@ -1,5 +1,22 @@
-﻿@{
+﻿@model RightoGo.Web.ViewModels.Home.IndexViewModel
+@{
     ViewBag.Title = "Home Page";
 }
-
 <h1>Hello, this is my site!</h1>
+@foreach (var article in Model.Articles)
+{
+    <div class="jumbotron">
+        <h3>@article.Title</h3>
+        <small>@article.Topic</small>
+        <div>
+            @article.Content
+        </div>
+        <div>
+            Related to: @foreach (var relatedArticle in article.RelatedArticles)
+            {
+                <span>@relatedArticle.Title</span>
+            }
+        </div>
+        <small>@article.CreatedBy.UserName has writen this on @article.CreatedOnFormated</small>
+    </div>
+}
