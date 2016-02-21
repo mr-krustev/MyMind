@@ -6,13 +6,9 @@
 
     using Autofac;
     using Autofac.Integration.Mvc;
-
     using Controllers;
-
     using Data;
     using Data.Common;
-
-    using Services.Data;
     using Services.Web;
 
     public static class AutofacConfig
@@ -57,9 +53,9 @@
                 .As<IIdentifierProvider>()
                 .InstancePerRequest();
 
-            var servicesAssembly = Assembly.GetAssembly(typeof(IJokesService));
-            builder.RegisterAssemblyTypes(servicesAssembly).AsImplementedInterfaces();
-
+            // var servicesAssembly = Assembly.GetAssembly(typeof(IJokesService));
+            // builder.RegisterAssemblyTypes(servicesAssembly).AsImplementedInterfaces();
+            // TODO: Add ServiceAutoinject
             builder.RegisterGeneric(typeof(DbRepository<>))
                 .As(typeof(IDbRepository<>))
                 .InstancePerRequest();

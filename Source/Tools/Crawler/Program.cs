@@ -5,12 +5,12 @@
     using RightoGo.Data;
     using RightoGo.Data.Common;
     using RightoGo.Data.Models;
-    using RightoGo.Services.Data;
 
     public static class Program
     {
         public static void Main()
         {
+            /*
             var db = new ApplicationDbContext();
             var repo = new DbRepository<JokeCategory>(db);
             var categoriesService = new CategoriesService(repo);
@@ -33,6 +33,7 @@
                     Console.WriteLine(i);
                 }
             }
+            */
         }
     }
 }

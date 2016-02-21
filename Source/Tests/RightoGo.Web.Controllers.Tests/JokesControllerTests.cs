@@ -2,15 +2,11 @@
 {
     using Moq;
 
-    using RightoGo.Data.Models;
-    using RightoGo.Services.Data;
-    using RightoGo.Web.Infrastructure.Mapping;
-    using RightoGo.Web.ViewModels.Home;
-
     using NUnit.Framework;
-
+    using RightoGo.Data.Models;
+    using RightoGo.Web.Infrastructure.Mapping;
     using TestStack.FluentMVCTesting;
-
+    /*
     [TestFixture]
     public class JokesControllerTests
     {
@@ -33,4 +29,5 @@
                         }).AndNoModelErrors();
         }
     }
+    */
 }
