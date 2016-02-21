@@ -1,5 +1,6 @@
 ﻿namespace RightoGo.Data.Migrations
 {
+    using System;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
@@ -13,14 +14,23 @@
     {
         public Configuration()
         {
-            this.AutomaticMigrationsEnabled = false;
-            this.AutomaticMigrationDataLossAllowed = false;
+            this.AutomaticMigrationsEnabled = true;
+            this.AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(ApplicationDbContext context)
         {
-            const string AdministratorUserName = "admin@admin.com";
-            const string AdministratorPassword = AdministratorUserName;
+            this.GenerateAdmin(context);
+            var seedData = new SeedData();
+            seedData.GenerateData(context);
+        }
+
+        
+
+        private void GenerateAdmin(ApplicationDbContext context)
+        {
+            const string AdministratorUserName = "admin@gmail.com";
+            const string AdministratorPassword = "pazzwurd12";
 
             if (!context.Roles.Any())
             {
@@ -31,9 +41,9 @@
                 roleManager.Create(role);
 
                 // Create admin user
-                var userStore = new UserStore<ApplicationUser>(context);
-                var userManager = new UserManager<ApplicationUser>(userStore);
-                var user = new ApplicationUser { UserName = AdministratorUserName, Email = AdministratorUserName };
+                var userStore = new UserStore<User>(context);
+                var userManager = new UserManager<User>(userStore);
+                var user = new User { UserName = AdministratorUserName, Email = AdministratorUserName };
                 userManager.Create(user, AdministratorPassword);
 
                 // Assign user to admin role
