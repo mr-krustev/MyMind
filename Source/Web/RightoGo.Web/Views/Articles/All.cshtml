@@ -1,20 +1,11 @@
-﻿@model RightoGo.Web.ViewModels.Home.IndexViewModel
+﻿@model RightoGo.Web.ViewModels.Articles.AllArticlesViewModel
+
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "All Articles";
 }
-<div class="jumbotron">
-    <h1>
-        Hello and welcome to RightoGo!
-    </h1>
-</div>
+<br /> 
+@*Add sort/order/filter*@
 
-<div>
-    <p>
-        Here you can learn more about international law, post your own works, review teacher's articles and much more!
-    </p>
-</div>
-
-<h2> Here are the latest articles: </h2>
 @foreach (var article in Model.Articles)
 {
     <div class="jumbotron">
@@ -23,7 +14,7 @@
         </h3>
         <br />
         <small>
-            @Html.ActionLink((string)article.Topic.Value, "All", "Articles", new { area = string.Empty, topicFilter = article.Topic.Value }, null)
+            @Html.ActionLink((string)article.Topic.Value, "All", "Articles", new { area = string.Empty, filterByTopic = article.Topic.Value }, null)
         </small>
         <br />
         <div class="more">
@@ -34,15 +25,46 @@
         {
             <div>
                 Related to: @foreach (var relatedArticle in article.RelatedArticles)
-                {
+                    {
                     <span>@Html.ActionLink((string)relatedArticle.Title, "Details", "Articles", new { area = string.Empty, id = relatedArticle.Id }, null)</span>
                 }
             </div>
-            <br />
+                <br />
         }
         <small>@article.CreatedBy.UserName has writen this on @article.CreatedOnFormated</small>
     </div>
 }
+
+<nav>
+    <ul class="pagination text-center">
+        @if (Model.Page - 1 > 0)
+            {
+            <li>
+                <a href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+        }
+        @for (int i = 1; i <= Model.TotalPages; i++)
+        {
+            var className = "";
+            if (Model.Page == i)
+            {
+                className = "active";
+            }
+
+            <li class="@className">@Html.ActionLink(i.ToString(), "All", new { area = string.Empty, page = i, pageSize = Model.PageSize, filterByTopic = Model.FilterBy, orderBy = Model.OrderBy, sortBy = Model.SortBy }, null )</li>
+        }
+        @if (Model.Page + 1 <= Model.TotalPages)
+            {
+            <li>
+                <a href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        }
+    </ul>
+</nav>
 
 @section scripts {
     <script>

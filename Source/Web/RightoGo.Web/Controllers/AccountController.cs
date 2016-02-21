@@ -11,7 +11,8 @@
 
     using RightoGo.Data.Models;
     using RightoGo.Web.ViewModels.Account;
-
+    using Services.Data.Contracts;
+    using Infrastructure.Mapping;
     [Authorize]
     public class AccountController : BaseController
     {
@@ -22,8 +23,11 @@
 
         private ApplicationUserManager userManager;
 
-        public AccountController()
+        private IUniversitiesServices universities;
+
+        public AccountController(IUniversitiesServices universities)
         {
+            this.universities = universities;
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
@@ -159,7 +163,14 @@
         [AllowAnonymous]
         public ActionResult Register()
         {
-            return this.View();
+            var uniData = this.universities.GetAll().To<UniversityViewModel>().ToList();
+
+            var viewModel = new RegisterViewModel()
+            {
+                Universities = uniData
+            };
+
+            return this.View(viewModel);
         }
 
         // POST: /Account/Register
@@ -170,7 +181,27 @@
         {
             if (this.ModelState.IsValid)
             {
-                var user = new User { UserName = model.Email, Email = model.Email };
+                var avatar = model.Avatar;
+                if (avatar == null)
+                {
+                    avatar = "http://www.avatarys.com/var/albums/Cool-Avatars/Mix-Avatars/Cool-avatars-anonymous-avatar.jpg?m=1439941438";
+                }
+                var universityId = model.UniversityId;
+                if (universityId == null || universityId == string.Empty)
+                {
+                    universityId = "1";
+                }
+
+                var user = new User
+                {
+                    UserName = model.Username,
+                    Email = model.Email,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    AvatarUrl = avatar,
+                    UniversityId = int.Parse(universityId)
+                };
+
                 var result = await this.UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -187,6 +218,8 @@
                 this.AddErrors(result);
             }
 
+            var universities = this.universities.GetAll().To<UniversityViewModel>().ToList();
+            model.Universities = universities;
             // If we got this far, something failed, redisplay form
             return this.View(model);
         }

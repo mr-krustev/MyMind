@@ -19,7 +19,8 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = string.Empty }, null)</li>
+                    @*<li>@Html.ActionLink("Home", "Index", "Home", new { area = string.Empty }, null)</li>*@
+                    <li>@Html.ActionLink("Articles", "All", "Articles", new { area = string.Empty }, null)</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -32,7 +33,6 @@
             <p>&copy; @DateTime.Now.Year - RightoGo</p>
         </footer>
     </div>
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

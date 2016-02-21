@@ -34,6 +34,10 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Linq.Dynamic, Version=1.0.5840.25917, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Linq.Dynamic.1.0.6\lib\net40\System.Linq.Dynamic.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,7 +48,9 @@
   <ItemGroup>
     <Compile Include="ArticlesServices.cs" />
     <Compile Include="Contracts\IArticlesServices.cs" />
+    <Compile Include="Contracts\IUniversitiesServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UniversitiesServices.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Data\RightoGo.Data.Common\RightoGo.Data.Common.csproj">

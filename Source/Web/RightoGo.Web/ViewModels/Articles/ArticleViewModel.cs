@@ -1,14 +1,12 @@
-﻿namespace RightoGo.Web.ViewModels.Home
+﻿namespace RightoGo.Web.ViewModels.Articles
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Web;
 
     using Data.Models;
     using Infrastructure.Mapping;
 
-    public class IndexArticleViewModel : IMapFrom<Article>
+    public class ArticleViewModel : IMapFrom<Article>
     {
         public int Id { get; set; }
 
@@ -32,9 +30,6 @@
             }
         }
 
-        public IEnumerable<IndexArticleRelatedModel> RelatedArticles { get; set; }
-
-        // public ICollection<User> AuthorizedUsers { get; set; }
-        // public ICollection<Video> RelatedVideos { get; set; }
+        public IEnumerable<ArticleRelatedModel> RelatedArticles { get; set; }
     }
 }

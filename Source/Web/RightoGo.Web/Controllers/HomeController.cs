@@ -17,7 +17,7 @@
         public ActionResult Index()
         {
             var articleData = this.articles
-                .GetPaged(1, 10)
+                .GetPaged(1, 5)
                 .To<IndexArticleViewModel>()
                 .ToList();
 
