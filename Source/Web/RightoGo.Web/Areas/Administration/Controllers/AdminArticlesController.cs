@@ -45,8 +45,8 @@
                 this.articles.Update(entity);
             }
 
-            var result = this.articles.GetAll().To<ArticleViewModel>();
-            return this.Json(result.ToDataSourceResult(request, this.ModelState));
+            var result = this.articles.GetById(article.Id).To<ArticleViewModel>().FirstOrDefault();
+            return this.Json(new[] { result }.ToDataSourceResult(request, this.ModelState));
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
@@ -60,8 +60,8 @@
             }
 
             this.articles.Delete(entity);
-
-            return this.Json(new[] { article }.ToDataSourceResult(request, this.ModelState));
+            var result = this.articles.GetById(article.Id).To<ArticleViewModel>().FirstOrDefault();
+            return this.Json(new[] { result }.ToDataSourceResult(request, this.ModelState));
         }
 
         protected override void Dispose(bool disposing)
