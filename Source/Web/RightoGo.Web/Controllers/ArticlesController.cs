@@ -3,7 +3,7 @@
     using System;
     using System.Linq;
     using System.Web.Mvc;
-    
+
     using Infrastructure.Mapping;
     using Services.Data.Contracts;
     using ViewModels.Articles;
@@ -30,12 +30,17 @@
             var viewModel = new AllArticlesViewModel()
             {
                 Articles = data,
-                Page = page,
-                PageSize = pageSize,
-                OrderBy = orderBy,
-                FilterBy = filterByTopic,
-                SortBy = sortBy,
-                TotalPages = totalPages
+                PagingInfo = new PagingViewModel()
+                {
+                    Page = page,
+                    PageSize = pageSize,
+                    OrderBy = orderBy,
+                    FilterBy = filterByTopic,
+                    SortBy = sortBy,
+                    TotalPages = totalPages,
+                    AreaName = string.Empty,
+                    ActionName = "All"
+                }
             };
 
             return this.View(viewModel);

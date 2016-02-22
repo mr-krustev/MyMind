@@ -18,7 +18,11 @@
           columns.Bound(c => c.CreatorName).Title("Creator");
           columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
       })
-      .Editable(editable => editable.Mode(GridEditMode.PopUp))
+      .Editable(editable =>
+      {
+          editable.Mode(GridEditMode.PopUp);
+          editable.DisplayDeleteConfirmation("Are you completely sure?");
+      })
       .Pageable()
       .Sortable(sortable =>
       {

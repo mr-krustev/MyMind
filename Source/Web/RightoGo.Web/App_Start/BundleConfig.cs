@@ -20,6 +20,8 @@
                 .Include(
                 "~/Scripts/KendoUI/kendo.all.min.js",
                 "~/Scripts/KendoUI/kendo.aspnetmvc.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/notifications").Include("~/Scripts/toastr.min.js"));
         }
 
         private static void RegisterStyles(BundleCollection bundles)
@@ -27,6 +29,8 @@
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/bootstrap.css", "~/Content/site.css"));
 
             bundles.Add(new StyleBundle("~/Content/KendoCSS").Include("~/Content/KendoUI/kendo.common.min.css", "~/Content/KendoUI/kendo.default.min.css"));
+
+            bundles.Add(new StyleBundle("~/Content/Notifications").Include("~/Content/toastr.min.css"));
         }
     }
 }

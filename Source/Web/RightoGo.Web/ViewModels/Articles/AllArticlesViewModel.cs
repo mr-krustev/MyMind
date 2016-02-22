@@ -2,20 +2,12 @@
 {
     using System.Collections.Generic;
 
+    using Shared;
+
     public class AllArticlesViewModel
     {
         public IEnumerable<ArticleViewModel> Articles { get; set; }
 
-        public int Page { get; set; }
-
-        public int PageSize { get; set; }
-
-        public string FilterBy { get; set; }
-
-        public string OrderBy { get; set; }
-
-        public string SortBy { get; set; }
-
-        public int TotalPages { get; set; }
+        public PagingViewModel PagingInfo { get; set; }
     }
 }

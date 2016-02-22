@@ -1,0 +1,32 @@
+﻿@model RightoGo.Web.ViewModels.Shared.PagingViewModel
+
+<nav>
+    <ul class="pagination text-center">
+        @if (Model.Page - 1 > 0)
+            {
+            <li>
+                <a href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+        }
+        @for (int i = 1; i <= Model.TotalPages; i++)
+        {
+            var className = "";
+            if (Model.Page == i)
+            {
+                className = "active";
+            }
+
+            <li class="@className">@Html.ActionLink(i.ToString(), Model.ActionName, new { area = Model.AreaName, page = i, pageSize = Model.PageSize, filterByTopic = Model.FilterBy, orderBy = Model.OrderBy, sortBy = Model.SortBy }, null)</li>
+        }
+        @if (Model.Page + 1 <= Model.TotalPages)
+            {
+            <li>
+                <a href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        }
+    </ul>
+</nav>

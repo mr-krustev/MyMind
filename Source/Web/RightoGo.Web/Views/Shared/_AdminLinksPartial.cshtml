@@ -1,0 +1,10 @@
+﻿@if (User.IsInRole("Administrator"))
+{
+    <li class="dropdown">
+        <a href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle">Admin Panel<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+            <li>@Html.ActionLink("Administer Articles", "Index", new { area = "Administration", controller = "AdminArticles" })</li>
+            <li role="separator" class="divider"></li>
+        </ul>
+    </li>
+}
