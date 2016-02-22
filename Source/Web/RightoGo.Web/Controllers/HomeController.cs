@@ -5,6 +5,7 @@
     using Infrastructure.Mapping;
     using Services.Data.Contracts;
     using ViewModels.Home;
+
     public class HomeController : BaseController
     {
         private IArticlesServices articles;

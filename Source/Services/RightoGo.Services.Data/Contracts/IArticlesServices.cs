@@ -6,12 +6,19 @@
 
     public interface IArticlesServices
     {
-        IQueryable<Article> GetAll(int page, int pageSize, string filterByTopic, string orderBy, string sortBy);
+        void Update(Article article);
+
+        void Delete(Article article);
+
+        IQueryable<Article> GetAll();
+
+        IQueryable<Article> GetAllPagedFilteredSorted(int page, int pageSize, string filterByTopic, string orderBy, string sortBy);
 
         IQueryable<Article> GetPaged(int page, int size);
 
         IQueryable<Article> GetFiltered(string filterByTopic);
 
         IQueryable<Article> GetById(int id);
+        
     }
 }

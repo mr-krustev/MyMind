@@ -22,7 +22,24 @@
             this.sortValues.Add("name", "Title");
         }
 
-        public IQueryable<Article> GetAll(int page, int pageSize, string filterByTopic, string orderBy, string sortBy)
+        public IQueryable<Article> GetAll()
+        {
+            return this.articles.All();
+        }
+
+        public void Update(Article article)
+        {
+            this.articles.Update(article);
+            this.articles.Save();
+        }
+
+        public void Delete (Article article)
+        {
+            this.articles.Delete(article);
+            this.articles.Save();
+        }
+
+        public IQueryable<Article> GetAllPagedFilteredSorted(int page, int pageSize, string filterByTopic, string orderBy, string sortBy)
         {
             var result = this.articles.All();
 
@@ -62,5 +79,6 @@
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize);
         }
+       
     }
 }

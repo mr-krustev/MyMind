@@ -27,7 +27,8 @@
 
         private void GenerateAdmin(ApplicationDbContext context)
         {
-            const string AdministratorUserName = "admin@gmail.com";
+            const string AdministratorEmail = "admin@gmail.com";
+            const string AdministratorUserName = "Admin";
             const string AdministratorPassword = "pazzwurd12";
 
             if (!context.Roles.Any())
@@ -41,7 +42,7 @@
                 // Create admin user
                 var userStore = new UserStore<User>(context);
                 var userManager = new UserManager<User>(userStore);
-                var user = new User { UserName = AdministratorUserName, Email = AdministratorUserName };
+                var user = new User { UserName = AdministratorUserName, Email = AdministratorEmail };
                 userManager.Create(user, AdministratorPassword);
 
                 // Assign user to admin role

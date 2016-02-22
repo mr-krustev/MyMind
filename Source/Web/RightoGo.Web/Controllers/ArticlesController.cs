@@ -3,12 +3,12 @@
     using System;
     using System.Linq;
     using System.Web.Mvc;
-
-    using Data.Models;
+    
     using Infrastructure.Mapping;
     using Services.Data.Contracts;
     using ViewModels.Articles;
     using ViewModels.Shared;
+
     public class ArticlesController : BaseController
     {
         private IArticlesServices articles;
@@ -22,7 +22,7 @@
         public ActionResult All(int page = 1, int pageSize = 5, string filterByTopic = "", string orderBy = "desc", string sortBy = "date")
         {
             var data = this.articles
-                .GetAll(page, pageSize, filterByTopic, orderBy, sortBy)
+                .GetAllPagedFilteredSorted(page, pageSize, filterByTopic, orderBy, sortBy)
                 .To<ArticleViewModel>().ToList();
 
             var totalPages = (int)Math.Ceiling(this.articles.GetFiltered(filterByTopic).Count() / (decimal)pageSize);
