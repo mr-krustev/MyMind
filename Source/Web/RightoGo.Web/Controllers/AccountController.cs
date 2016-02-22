@@ -88,7 +88,7 @@
             var result =
                 await
                 this.SignInManager.PasswordSignInAsync(
-                    model.Email,
+                    model.UserName,
                     model.Password,
                     model.RememberMe,
                     shouldLockout: false);

@@ -3,8 +3,49 @@
 @{
     ViewBag.Title = "All Articles";
 }
-<br /> 
+<br />
 @*Add sort/order/filter*@
+
+<div>
+    @{
+        List<SelectListItem> orderByList = new List<SelectListItem>() {
+                new SelectListItem() { Value = "asc", Text = "Ascending" },
+                new SelectListItem() { Value = "desc", Text = "Descending"                }
+            };
+
+        List<SelectListItem> sortByList = new List<SelectListItem>();
+        sortByList.Add(new SelectListItem() { Value = "name", Text = "Title" });
+        sortByList.Add(new SelectListItem() { Value = "date", Text = "Dates" });
+
+    }
+
+    @using (Html.BeginForm("All", "Articles", new { sortBy = Model.PagingInfo.SortBy, orderBy = Model.PagingInfo.OrderBy }, FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+    {
+        <!--Add sortBy, etc-->
+        <div class="form-group">
+            @Html.LabelFor(m => Model.PagingInfo.SortBy, "Sort By:", new { @class = "col-md-1 control-label" })
+            <div class="col-md-10">
+                @Html.DropDownList("SortBy", sortByList, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => Model.PagingInfo.OrderBy, "Order By:", new { @class = "col-md-1 control-label" })
+            <div class="col-md-10">
+                @Html.DropDownList("OrderBy", orderByList, new { @class = "form-control" })
+            </div>
+        </div>
+
+        @*<div class="form-group">
+                @Html.LabelFor(m => Model.PagingInfo.SearchInput, "Search:", new { @class = "col-md-1 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => Model.SearchInput, null, new { @class = "form-control" })
+                </div>
+            </div>*@
+        <input class="btn btn-default" type="submit" value="Search" />
+    }
+    <br />
+</div>
 
 @foreach (var article in Model.Articles)
 {
@@ -29,7 +70,7 @@
                     <span>@Html.ActionLink((string)relatedArticle.Title, "Details", "Articles", new { area = string.Empty, id = relatedArticle.Id }, null)</span>
                 }
             </div>
-                <br />
+            <br />
         }
         <small>@article.CreatedBy.UserName has writen this on @article.CreatedOnFormated</small>
     </div>
