@@ -33,6 +33,7 @@
       .DataSource(dataSource => dataSource
           .Ajax()
           .Events(events => events.Error("grid_error"))
+          .Events(events => events.RequestEnd("handle_End"))
           .Model(model => model.Id(p => p.Id))
           .Read(read => read.Action("Articles_Read", "AdminArticles"))
           .Update(update => update.Action("Articles_Update", "AdminArticles"))
@@ -54,10 +55,18 @@
                     }
                 });
                 // Display the message
-                alert(message);
+                swal("Error", message, "error");
                 // Cancel the changes
                 var grid = $("#grid").data("kendoGrid");
                 grid.cancelChanges();
+            }
+        }
+
+        function handle_End(e) {
+            var response = e.response;
+            var type = e.type;
+            if (type === "update") {
+                swal("Success", e.message, "success");
             }
         }
     </script>

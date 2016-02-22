@@ -7,4 +7,6 @@
 /// <reference path="jquery-shorten-js.js" />
 /// <reference path="kendoui/kendo.all.min.js" />
 /// <reference path="kendoui/kendo.aspnetmvc.min.js" />
+/// <reference path="sweetalert.min.js" />
+/// <reference path="sweetalert-dev.js" />
 /// <reference path="toastr.min.js" />
