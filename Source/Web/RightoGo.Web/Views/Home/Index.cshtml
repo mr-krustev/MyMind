@@ -40,7 +40,16 @@
             </div>
             <br />
         }
-        <small>@article.CreatedBy.UserName has writen this on @article.CreatedOnFormated</small>
+        <small>
+            @if (this.User.Identity.IsAuthenticated)
+            {
+                @Html.ActionLink((string)article.CreatedBy.UserName, "ById", new { id = article.CreatedBy.Id, controller = "Users" })
+            }
+            else
+            {
+                @article.CreatedBy.UserName
+            } has writen this on @article.CreatedOnFormated
+        </small>
     </div>
 }
 

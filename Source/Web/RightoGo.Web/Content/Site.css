@@ -22,3 +22,12 @@ select,
 textarea {
     max-width: 280px;
 }
+
+profile-image {
+    width: auto;
+    min-width: 150px;
+    max-width: 300px;
+    height: auto;
+    min-height: 150px;
+    max-height: 300px;
+}
