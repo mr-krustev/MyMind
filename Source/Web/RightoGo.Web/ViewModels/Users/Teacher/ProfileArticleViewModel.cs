@@ -9,7 +9,7 @@
 
     public class ProfileArticleViewModel : IMapFrom<Article>
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
         public string Title { get; set; }
 

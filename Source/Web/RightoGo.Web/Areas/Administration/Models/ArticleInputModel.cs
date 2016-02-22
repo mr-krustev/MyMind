@@ -10,7 +10,5 @@
         [MinLength(2)]
         [MaxLength(40)]
         public string Title { get; set; }
-
-        public bool IsPrivate { get; set; }
     }
 }

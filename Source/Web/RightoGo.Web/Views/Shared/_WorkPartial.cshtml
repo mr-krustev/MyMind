@@ -1,17 +1,53 @@
 ﻿@model RightoGo.Web.ViewModels.Shared.Student.WorksViewModel
 
-<div class="jumbotron">
-    <h3>
-        @Html.ActionLink((string)Model.Title, "Details", "Works", new { area = string.Empty, id = @Model.Id }, null)
-    </h3>
-    <br />
-    <small>
-        @Model.TopicName
-    </small>
-    <br />
-    <div class="more">
-        @Model.Content
-    </div>
-    <br />
-    <small>@Model.UserName has writen this on @Model.CreatedOnFormatted</small>
+<h3>
+    @Html.ActionLink((string)Model.Title, "Details", "Works", new { area = string.Empty, id = @Model.Id }, null)
+</h3>
+<br />
+<small>
+    @Model.TopicName
+</small>
+<br />
+<div class="more">
+    @Model.Content
 </div>
+<br />
+<small>@Model.UserName has writen this on @Model.CreatedOnFormatted</small>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            var showChar = 300;
+            var ellipsestext = "...";
+            var moretext = "more";
+            var lesstext = "less";
+            $('.more').each(function () {
+                var content = $(this).html();
+
+                if (content.length > showChar) {
+
+                    var c = content.substr(0, showChar);
+                    var h = content.substr(showChar - 1, content.length - showChar);
+
+                    var html = c + '<span class="moreellipses">' + ellipsestext + '&nbsp;</span><span class="morecontent"><span style="display: none;">' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink">' + moretext + '</a></span>';
+
+                    $(this).html(html);
+                }
+
+            });
+
+            $(".morelink").click(function () {
+                if ($(this).hasClass("less")) {
+                    $(this).removeClass("less");
+                    $(this).html(moretext);
+                } else {
+                    $(this).addClass("less");
+                    $(this).html(lesstext);
+                }
+                $(this).parent().prev().toggle();
+                $(this).prev().toggle();
+                return false;
+            });
+        });
+    </script>
+}

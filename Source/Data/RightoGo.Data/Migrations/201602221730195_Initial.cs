@@ -50,23 +50,19 @@ namespace RightoGo.Data.Migrations
                         Title = c.String(nullable: false, maxLength: 40),
                         Content = c.String(nullable: false),
                         CreatedById = c.String(nullable: false, maxLength: 128),
-                        IsPrivate = c.Boolean(nullable: false),
                         CreatedOn = c.DateTime(nullable: false),
                         ModifiedOn = c.DateTime(),
                         IsDeleted = c.Boolean(nullable: false),
                         DeletedOn = c.DateTime(),
-                        User_Id = c.String(maxLength: 128),
                         Topic_Id = c.Int(),
                         Article_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.AspNetUsers", t => t.User_Id)
-                .ForeignKey("dbo.Topics", t => t.Topic_Id)
                 .ForeignKey("dbo.AspNetUsers", t => t.CreatedById, cascadeDelete: true)
+                .ForeignKey("dbo.Topics", t => t.Topic_Id)
                 .ForeignKey("dbo.Articles", t => t.Article_Id)
                 .Index(t => t.CreatedById)
                 .Index(t => t.IsDeleted)
-                .Index(t => t.User_Id)
                 .Index(t => t.Topic_Id)
                 .Index(t => t.Article_Id);
             
@@ -94,19 +90,13 @@ namespace RightoGo.Data.Migrations
                         AccessFailedCount = c.Int(nullable: false),
                         UserName = c.String(nullable: false, maxLength: 256),
                         Test_Id = c.Int(),
-                        Work_Id = c.Int(),
-                        Article_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Tests", t => t.Test_Id)
-                .ForeignKey("dbo.Works", t => t.Work_Id)
                 .ForeignKey("dbo.Universities", t => t.UniversityId)
-                .ForeignKey("dbo.Articles", t => t.Article_Id)
                 .Index(t => t.UniversityId)
                 .Index(t => t.UserName, unique: true, name: "UserNameIndex")
-                .Index(t => t.Test_Id)
-                .Index(t => t.Work_Id)
-                .Index(t => t.Article_Id);
+                .Index(t => t.Test_Id);
             
             CreateTable(
                 "dbo.AspNetUserClaims",
@@ -188,22 +178,18 @@ namespace RightoGo.Data.Migrations
                         Title = c.String(nullable: false, maxLength: 40),
                         Content = c.String(nullable: false),
                         CreatedById = c.String(nullable: false, maxLength: 128),
-                        IsPrivate = c.Boolean(nullable: false),
                         CreatedOn = c.DateTime(nullable: false),
                         ModifiedOn = c.DateTime(),
                         IsDeleted = c.Boolean(nullable: false),
                         DeletedOn = c.DateTime(),
                         Topic_Id = c.Int(),
-                        User_Id = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.AspNetUsers", t => t.CreatedById, cascadeDelete: true)
                 .ForeignKey("dbo.Topics", t => t.Topic_Id)
-                .ForeignKey("dbo.AspNetUsers", t => t.User_Id)
                 .Index(t => t.CreatedById)
                 .Index(t => t.IsDeleted)
-                .Index(t => t.Topic_Id)
-                .Index(t => t.User_Id);
+                .Index(t => t.Topic_Id);
             
             CreateTable(
                 "dbo.Likes",
@@ -302,9 +288,6 @@ namespace RightoGo.Data.Migrations
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropForeignKey("dbo.Videos", "Article_Id", "dbo.Articles");
             DropForeignKey("dbo.Articles", "Article_Id", "dbo.Articles");
-            DropForeignKey("dbo.Articles", "CreatedById", "dbo.AspNetUsers");
-            DropForeignKey("dbo.AspNetUsers", "Article_Id", "dbo.Articles");
-            DropForeignKey("dbo.Works", "User_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.Videos", "User_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUsers", "UniversityId", "dbo.Universities");
             DropForeignKey("dbo.Tests", "User_Id1", "dbo.AspNetUsers");
@@ -317,14 +300,13 @@ namespace RightoGo.Data.Migrations
             DropForeignKey("dbo.Likes", "WorkId", "dbo.Works");
             DropForeignKey("dbo.Likes", "VoterId", "dbo.AspNetUsers");
             DropForeignKey("dbo.Works", "CreatedById", "dbo.AspNetUsers");
-            DropForeignKey("dbo.AspNetUsers", "Work_Id", "dbo.Works");
             DropForeignKey("dbo.Articles", "Topic_Id", "dbo.Topics");
             DropForeignKey("dbo.AspNetUsers", "Test_Id", "dbo.Tests");
             DropForeignKey("dbo.Questions", "Test_Id", "dbo.Tests");
             DropForeignKey("dbo.Tests", "CreatedById", "dbo.AspNetUsers");
             DropForeignKey("dbo.Grades", "RelatedStudentId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.Articles", "User_Id", "dbo.AspNetUsers");
+            DropForeignKey("dbo.Articles", "CreatedById", "dbo.AspNetUsers");
             DropForeignKey("dbo.Answers", "QuestionId", "dbo.Questions");
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropIndex("dbo.Videos", new[] { "Article_Id" });
@@ -338,7 +320,6 @@ namespace RightoGo.Data.Migrations
             DropIndex("dbo.Likes", new[] { "IsDeleted" });
             DropIndex("dbo.Likes", new[] { "WorkId" });
             DropIndex("dbo.Likes", new[] { "VoterId" });
-            DropIndex("dbo.Works", new[] { "User_Id" });
             DropIndex("dbo.Works", new[] { "Topic_Id" });
             DropIndex("dbo.Works", new[] { "IsDeleted" });
             DropIndex("dbo.Works", new[] { "CreatedById" });
@@ -352,14 +333,11 @@ namespace RightoGo.Data.Migrations
             DropIndex("dbo.Grades", new[] { "RelatedStudentId" });
             DropIndex("dbo.Grades", new[] { "RelatedTestId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
-            DropIndex("dbo.AspNetUsers", new[] { "Article_Id" });
-            DropIndex("dbo.AspNetUsers", new[] { "Work_Id" });
             DropIndex("dbo.AspNetUsers", new[] { "Test_Id" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.AspNetUsers", new[] { "UniversityId" });
             DropIndex("dbo.Articles", new[] { "Article_Id" });
             DropIndex("dbo.Articles", new[] { "Topic_Id" });
-            DropIndex("dbo.Articles", new[] { "User_Id" });
             DropIndex("dbo.Articles", new[] { "IsDeleted" });
             DropIndex("dbo.Articles", new[] { "CreatedById" });
             DropIndex("dbo.Questions", new[] { "Test_Id" });

@@ -10,7 +10,6 @@
     {
         public Work()
         {
-            this.AuthorizedUsers = new HashSet<User>();
             this.Likes = new HashSet<Like>();
         }
 
@@ -29,11 +28,6 @@
         public string CreatedById { get; set; }
 
         public virtual User CreatedBy { get; set; }
-
-        [DefaultValue(false)]
-        public bool IsPrivate { get; set; }
-
-        public virtual ICollection<User> AuthorizedUsers { get; set; }
 
         public virtual ICollection<Like> Likes { get; set; }
     }

@@ -29,43 +29,52 @@
                 </div><div>
                     <i>Specialty: </i> @Model.Specialty
                 </div>
-
-                @*Foreach here works of user*@
-                <div class="row">
-                    @foreach (var work in Model.Works)
-                    {
-                        <div class="col-md-4">
-                            @Html.Partial("_WorkPartial", work);
-                        </div>
-                    }
-                </div>
-
             }
-
             @if (Model.RoleName == "Teacher")
             {
                 <div>
                     <i>Field of Study: </i> @Model.FieldOfStudy
                 </div>
-
-                @*Foreach articles of user.*@
-                <div class="row">
-                    @foreach (var article in Model.Articles)
-                    {
-                        <div class="col-md-4">
-                            @Html.Partial("_ArticlePartial", article);
-                        </div>
-                    }
-                </div>
-
-                if (Model.Works != null && Model.Works.Count() > 0)
-                {
-                    @*If student became teacher?*@
-                }
             }
         </div>
     </div>
-    <div class="row"></div>
+    <div class="row">
+        @if (Model.RoleName == "Student")
+            {
+            @*Foreach here works of user*@
+            <div class="row">
+                @foreach (var work in Model.Works)
+                {
+                    <div class="col-md-6">
+                        @Html.Partial("_WorkPartial", work);
+                    </div>
+                }
+            </div>
+
+        }
+
+        @if (Model.RoleName == "Teacher")
+            {
+            @*Foreach articles of user.*@
+            <div class="row">
+                @{
+                    var len = Model.Articles.Count() > 3 ? 3 : Model.Articles.Count();
+
+                }
+                @foreach (var article in Model.Articles)
+                {
+                    <div class="col-md-6">
+                        @Html.Partial("_ArticlePartial", article);
+                    </div>
+                }
+            </div>
+
+                    if (Model.Works != null && Model.Works.Count() > 0)
+                    {
+                        @*If student became teacher?*@
+                        }
+                    }
+    </div>
 </div>
 
 @section Scripts {

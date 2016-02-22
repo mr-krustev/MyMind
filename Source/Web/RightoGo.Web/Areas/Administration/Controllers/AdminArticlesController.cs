@@ -40,7 +40,6 @@
             {
                 var entity = this.articles.GetById(article.Id).FirstOrDefault();
                 entity.Title = article.Title;
-                entity.IsPrivate = article.IsPrivate;
 
                 this.articles.Update(entity);
             }

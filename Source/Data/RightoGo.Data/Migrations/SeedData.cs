@@ -121,9 +121,7 @@
                         Topic = this.topics[this.random.Next(0, this.topics.Count)],
                         Content = "This is nothing but blaberish",
                         CreatedById = student.Id,
-                        IsPrivate = this.random.Next(1, 5) % 2 == 0,
                     };
-                    work.AuthorizedUsers.Add(student);
                     generatedWorks.Add(work);
                 }
             }
@@ -148,9 +146,7 @@
                         Content = this.GetContentForArticle(),
                         Topic = this.topics[this.random.Next(0, this.topics.Count)],
                         CreatedById = teacher.Id,
-                        IsPrivate = i % 2 == 1,
                     };
-                    article.AuthorizedUsers.Add(teacher);
                     if (generatedArticles.Count > 0)
                     {
                         article.RelatedArticles.Add(generatedArticles[0]);

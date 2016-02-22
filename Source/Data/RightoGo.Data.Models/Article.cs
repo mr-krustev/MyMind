@@ -10,7 +10,6 @@
     {
         public Article()
         {
-            this.AuthorizedUsers = new HashSet<User>();
             this.RelatedVideos = new HashSet<Video>();
             this.RelatedArticles = new HashSet<Article>();
         }
@@ -30,11 +29,6 @@
         public string CreatedById { get; set; }
 
         public virtual User CreatedBy { get; set; }
-
-        [DefaultValue(false)]
-        public bool IsPrivate { get; set; }
-
-        public virtual ICollection<User> AuthorizedUsers { get; set; }
 
         public virtual ICollection<Video> RelatedVideos { get; set; }
 

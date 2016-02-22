@@ -10,7 +10,7 @@
 
     public class WorksViewModel : IMapFrom<Work>, IHaveCustomMappings
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
         public string Title { get; set; }
 
@@ -24,7 +24,7 @@
 
         public bool IsPrivate { get; set; }
 
-        public int LikesCount { get; set; }
+        public int? LikesCount { get; set; }
 
         public DateTime CreatedOn { get; set; }
 

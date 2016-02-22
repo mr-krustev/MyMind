@@ -13,7 +13,7 @@ namespace RightoGo.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201602221707440_Initial"; }
+            get { return "201602221730195_Initial"; }
         }
         
         string IMigrationMetadata.Source
