@@ -10,8 +10,8 @@
         [Required]
         public string Value { get; set; }
 
-        public ICollection<Article> RelatedArticles { get; set; }
+        public virtual ICollection<Article> RelatedArticles { get; set; }
 
-        public ICollection<Work> RelatedWorks { get; set; }
+        public virtual ICollection<Work> RelatedWorks { get; set; }
     }
 }

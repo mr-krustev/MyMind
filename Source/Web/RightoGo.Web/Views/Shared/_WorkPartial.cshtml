@@ -1,0 +1,17 @@
+﻿@model RightoGo.Web.ViewModels.Shared.Student.WorksViewModel
+
+<div class="jumbotron">
+    <h3>
+        @Html.ActionLink((string)Model.Title, "Details", "Works", new { area = string.Empty, id = @Model.Id }, null)
+    </h3>
+    <br />
+    <small>
+        @Model.TopicName
+    </small>
+    <br />
+    <div class="more">
+        @Model.Content
+    </div>
+    <br />
+    <small>@Model.UserName has writen this on @Model.CreatedOnFormatted</small>
+</div>

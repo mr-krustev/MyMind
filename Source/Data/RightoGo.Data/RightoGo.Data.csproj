@@ -60,13 +60,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationDbContext.cs" />
-    <Compile Include="Migrations\201602210328396_Initial.cs" />
-    <Compile Include="Migrations\201602210328396_Initial.Designer.cs">
-      <DependentUpon>201602210328396_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201602211604525_UniveristyUniqueIndex.cs" />
-    <Compile Include="Migrations\201602211604525_UniveristyUniqueIndex.Designer.cs">
-      <DependentUpon>201602211604525_UniveristyUniqueIndex.cs</DependentUpon>
+    <Compile Include="Migrations\201602221707440_Initial.cs" />
+    <Compile Include="Migrations\201602221707440_Initial.Designer.cs">
+      <DependentUpon>201602221707440_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData.cs" />
@@ -101,11 +97,8 @@
     </AdditionalFiles>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201602210328396_Initial.resx">
-      <DependentUpon>201602210328396_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201602211604525_UniveristyUniqueIndex.resx">
-      <DependentUpon>201602211604525_UniveristyUniqueIndex.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201602221707440_Initial.resx">
+      <DependentUpon>201602221707440_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

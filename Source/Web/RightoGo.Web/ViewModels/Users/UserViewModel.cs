@@ -5,6 +5,8 @@
     using AutoMapper;
     using Data.Models;
     using Infrastructure.Mapping;
+    using Shared.Student;
+    using Teacher;
 
     public class UserViewModel : IMapFrom<User>, IHaveCustomMappings
     {
@@ -19,26 +21,22 @@
         public string UniversityName { get; set; }
 
         // Students Related
-        public ICollection<Test> TestsTaken { get; set; }
-
-        public ICollection<Grade> Grades { get; set; }
-
+        // public ICollection<Test> TestsTaken { get; set; }
+        // public ICollection<Grade> Grades { get; set; }
         public string Faculty { get; set; }
 
         public string Specialty { get; set; }
 
-        public ICollection<Work> Works { get; set; }
+        public IEnumerable<WorksViewModel> Works { get; set; }
 
         // Teacher Related
-        public ICollection<Video> Videos { get; set; }
-
-        public ICollection<Test> TestsCreated { get; set; }
-
+        // public ICollection<Video> Videos { get; set; }
+        // public ICollection<Test> TestsCreated { get; set; }
         public string FieldOfStudy { get; set; }
 
-        public ICollection<Article> Articles { get; set; }
+        public IEnumerable<ProfileArticleViewModel> Articles { get; set; }
 
-        public string RoleName { get; set; } // How do you even?
+        public string RoleName { get; set; }
 
         public void CreateMappings(IMapperConfiguration configuration)
         {

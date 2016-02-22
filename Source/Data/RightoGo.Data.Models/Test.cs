@@ -19,8 +19,8 @@
 
         public virtual User CreatedBy { get; set; }
 
-        public ICollection<User> StudentsAllowed { get; set; }
+        public virtual ICollection<User> StudentsAllowed { get; set; }
 
-        public ICollection<Question> Questions { get; set; }
+        public virtual ICollection<Question> Questions { get; set; }
     }
 }

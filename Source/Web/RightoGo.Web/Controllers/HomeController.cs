@@ -15,7 +15,7 @@
             this.articles = articles;
         }
 
-        [OutputCache(Duration = 10 * 60 * 60)]
+        //[OutputCache(Duration = 10 * 60 * 60)]
         public ActionResult Index()
         {
             var articleData = this.articles

@@ -1,12 +1,13 @@
-﻿namespace RightoGo.Web.ViewModels.Articles
+﻿namespace RightoGo.Web.ViewModels.Users.Teacher
 {
     using System;
     using System.Collections.Generic;
 
+    using Articles;
     using Data.Models;
     using Infrastructure.Mapping;
 
-    public class ArticleViewModel : IMapFrom<Article>
+    public class ProfileArticleViewModel : IMapFrom<Article>
     {
         public int Id { get; set; }
 

@@ -255,13 +255,14 @@ namespace RightoGo.Data.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(nullable: false),
+                        Name = c.String(nullable: false, maxLength: 100),
                         CreatedOn = c.DateTime(nullable: false),
                         ModifiedOn = c.DateTime(),
                         IsDeleted = c.Boolean(nullable: false),
                         DeletedOn = c.DateTime(),
                     })
                 .PrimaryKey(t => t.Id)
+                .Index(t => t.Name, unique: true)
                 .Index(t => t.IsDeleted);
             
             CreateTable(
@@ -330,6 +331,7 @@ namespace RightoGo.Data.Migrations
             DropIndex("dbo.Videos", new[] { "User_Id" });
             DropIndex("dbo.Videos", new[] { "IsDeleted" });
             DropIndex("dbo.Universities", new[] { "IsDeleted" });
+            DropIndex("dbo.Universities", new[] { "Name" });
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });

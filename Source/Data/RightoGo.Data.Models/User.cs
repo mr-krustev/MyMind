@@ -11,7 +11,6 @@
     public class User : IdentityUser
     {
         public User()
-            : base()
         {
             // Student related
             this.Likes = new HashSet<Like>();
@@ -38,24 +37,24 @@
         public ICollection<Like> Likes { get; set; }
 
         // Students Related
-        public ICollection<Test> TestsTaken { get; set; }
+        public virtual ICollection<Test> TestsTaken { get; set; }
 
-        public ICollection<Grade> Grades { get; set; }
+        public virtual ICollection<Grade> Grades { get; set; }
 
         public string Faculty { get; set; }
 
         public string Specialty { get; set; }
 
-        public ICollection<Work> Works { get; set; }
+        public virtual ICollection<Work> Works { get; set; }
 
         // Teacher Related
-        public ICollection<Video> Videos { get; set; }
+        public virtual ICollection<Video> Videos { get; set; }
 
-        public ICollection<Test> TestsCreated { get; set; }
+        public virtual ICollection<Test> TestsCreated { get; set; }
 
         public string FieldOfStudy { get; set; }
 
-        public ICollection<Article> Articles { get; set; }
+        public virtual ICollection<Article> Articles { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {

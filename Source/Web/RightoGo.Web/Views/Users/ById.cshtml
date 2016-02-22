@@ -1,11 +1,84 @@
 ﻿@model RightoGo.Web.ViewModels.Users.UserViewModel
 
-<h2>@Model.UserName's profile</h2>
+<h2>@Model.UserName's profile.</h2>
 
 <div class="jumbotron">
     <div class="row">
         <div class="col-md-4">
             <img src="@Model.AvatarUrl" class="profile-image" />
+            @*<button onclick="changeAvatarPop()" class="btn btn-primary">Change</button>
+                <div style="display: none;">
+                    <input type="url" id="avatar-url-value" placeholder="New avatar" />
+                    <span><button class="btn btn-success" onclick="changeAvatarAjax()">Save</button><button class="btn btn-default" id="cancel-avatar-pop" onclick="changeAvatarPop()">Cancel</button></span>
+                </div>*@
+        </div>
+
+        <div class="col-md-6">
+            <div>
+                <i>First Name: </i> @Model.FirstName
+            </div><div>
+                <i>Last Name: </i> @Model.LastName
+            </div>
+            <div>
+                <i>University: </i> @Model.UniversityName
+            </div>
+            @if (Model.RoleName == "Student")
+            {
+                <div>
+                    <i>Faculty: </i> @Model.Faculty
+                </div><div>
+                    <i>Specialty: </i> @Model.Specialty
+                </div>
+
+                @*Foreach here works of user*@
+                <div class="row">
+                    @foreach (var work in Model.Works)
+                    {
+                        <div class="col-md-4">
+                            @Html.Partial("_WorkPartial", work);
+                        </div>
+                    }
+                </div>
+
+            }
+
+            @if (Model.RoleName == "Teacher")
+            {
+                <div>
+                    <i>Field of Study: </i> @Model.FieldOfStudy
+                </div>
+
+                @*Foreach articles of user.*@
+                <div class="row">
+                    @foreach (var article in Model.Articles)
+                    {
+                        <div class="col-md-4">
+                            @Html.Partial("_ArticlePartial", article);
+                        </div>
+                    }
+                </div>
+
+                if (Model.Works != null && Model.Works.Count() > 0)
+                {
+                    @*If student became teacher?*@
+                }
+            }
         </div>
     </div>
+    <div class="row"></div>
 </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @*<script>
+            function changeAvatarPop(e) {
+                if (!e)
+                    e = window.event;
+                var sender = e.srcElement || e.target;
+
+                var myId = sender.id;
+
+                var $newUrl = $("#avatar-url-value").val();
+            }
+        </script>*@
+}

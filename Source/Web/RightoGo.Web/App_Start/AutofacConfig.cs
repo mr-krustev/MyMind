@@ -9,8 +9,13 @@
     using Controllers;
     using Data;
     using Data.Common;
-    using Services.Web;
+    using Data.Common.UserRepoModel;
+    using Data.Models;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using Services.Data.Contracts;
+    using Services.Web;
+
     public static class AutofacConfig
     {
         public static void RegisterAutofac()
@@ -32,6 +37,10 @@
 
             // OPTIONAL: Enable property injection into action filters.
             builder.RegisterFilterProvider();
+
+            builder.RegisterType<UserStore<User>>()
+                .As<IUserStore<User>>();
+            builder.RegisterType<UserManager<User>>();
 
             // Register services
             RegisterServices(builder);
@@ -58,6 +67,10 @@
 
             builder.RegisterGeneric(typeof(DbRepository<>))
                 .As(typeof(IDbRepository<>))
+                .InstancePerRequest();
+
+            builder.RegisterGeneric(typeof(GenericRepository<>))
+                .As(typeof(IRepository<>))
                 .InstancePerRequest();
 
             builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())

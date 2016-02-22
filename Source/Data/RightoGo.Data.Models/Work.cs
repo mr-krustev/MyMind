@@ -33,8 +33,8 @@
         [DefaultValue(false)]
         public bool IsPrivate { get; set; }
 
-        public ICollection<User> AuthorizedUsers { get; set; }
+        public virtual ICollection<User> AuthorizedUsers { get; set; }
 
-        public ICollection<Like> Likes { get; set; }
+        public virtual ICollection<Like> Likes { get; set; }
     }
 }

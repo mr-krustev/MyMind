@@ -242,6 +242,9 @@
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\Shared\ErrorOccurredViewModel.cs" />
     <Compile Include="ViewModels\Shared\PagingViewModel.cs" />
+    <Compile Include="ViewModels\Shared\Student\WorksViewModel.cs" />
+    <Compile Include="ViewModels\Users\Teacher\ProfileArticleViewModel.cs" />
+    <Compile Include="ViewModels\Users\Teacher\ProfileRelatedArticleViewModel.cs" />
     <Compile Include="ViewModels\Users\UserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -326,6 +329,8 @@
     <Content Include="Views\Shared\_NotificationPartial.cshtml" />
     <Content Include="Views\Shared\_PagingPartial.cshtml" />
     <Content Include="Views\Users\ById.cshtml" />
+    <Content Include="Views\Shared\_WorkPartial.cshtml" />
+    <Content Include="Views\Shared\_ArticlePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

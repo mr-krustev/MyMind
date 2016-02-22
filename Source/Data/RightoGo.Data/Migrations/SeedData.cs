@@ -113,17 +113,19 @@
 
             foreach (var student in students)
             {
-                var work = new Work()
+                for (int i = 0; i < 3; i++)
                 {
-                    Title = "This is my unique title.",
-                    Topic = this.topics[this.random.Next(0, this.topics.Count)],
-                    Content = "This is nothing but blaberish",
-                    CreatedById = student.Id,
-                    CreatedBy = student,
-                    IsPrivate = this.random.Next(1, 5) % 2 == 0,
-                };
-                work.AuthorizedUsers.Add(student);
-                generatedWorks.Add(work);
+                    var work = new Work()
+                    {
+                        Title = "This is my unique title.",
+                        Topic = this.topics[this.random.Next(0, this.topics.Count)],
+                        Content = "This is nothing but blaberish",
+                        CreatedById = student.Id,
+                        IsPrivate = this.random.Next(1, 5) % 2 == 0,
+                    };
+                    work.AuthorizedUsers.Add(student);
+                    generatedWorks.Add(work);
+                }
             }
 
             return generatedWorks;
@@ -145,7 +147,6 @@
                         Title = "This is just an article",
                         Content = this.GetContentForArticle(),
                         Topic = this.topics[this.random.Next(0, this.topics.Count)],
-                        CreatedBy = teacher,
                         CreatedById = teacher.Id,
                         IsPrivate = i % 2 == 1,
                     };
@@ -196,6 +197,7 @@
         private List<User> GenerateUsers()
         {
             const int numberOfUsers = 10;
+            const string defaultAvatar = "http://www.avatarys.com/var/albums/Cool-Avatars/Mix-Avatars/Cool-avatars-anonymous-avatar.jpg?m=1439941438";
 
             var generatedUsers = new List<User>();
             for (int i = 0; i < numberOfUsers; i++)
@@ -204,14 +206,13 @@
                 {
                     UserName = "user" + i,
                     Email = "user" + i + "@cool.com",
-                    PasswordHash = userManager.PasswordHasher.HashPassword("user" + i + "pass")
+                    PasswordHash = this.userManager.PasswordHasher.HashPassword("user" + i + "pass"),
+                    AvatarUrl = defaultAvatar,
+                    FirstName = "Toshko",
+                    LastName = "Goshkov",
                 };
 
-                // These users later on will have roles Student(first 5) and Teacher(last one)
-                if (i < numberOfUsers / 2 || i == numberOfUsers - 1)
-                {
-                    user.UniversityId = this.universities[this.random.Next(0, this.universities.Count)].Id;
-                }
+                user.UniversityId = this.universities[this.random.Next(0, this.universities.Count)].Id;
 
                 generatedUsers.Add(user);
             }
@@ -277,7 +278,7 @@
 
             return generatedUniversities;
         }
-        
+
         private string GetContentForArticle()
         {
             return @"
