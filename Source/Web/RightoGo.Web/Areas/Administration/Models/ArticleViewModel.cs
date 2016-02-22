@@ -21,7 +21,7 @@
 
         public string Title { get; set; }
 
-        public Topic Topic { get; set; }
+        public string TopicName { get; set; }
 
         public string CreatorName { get; set; }
 
@@ -30,7 +30,8 @@
         public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<Article, ArticleViewModel>()
-                .ForMember(a => a.CreatorName, opt => opt.MapFrom(x => x.CreatedBy.UserName));
+                .ForMember(a => a.CreatorName, opt => opt.MapFrom(x => x.CreatedBy.UserName))
+                .ForMember(a => a.TopicName, opt => opt.MapFrom(x => x.Topic.Value));
         }
     }
 }

@@ -28,9 +28,10 @@
 
         public ActionResult Articles_Read([DataSourceRequest]DataSourceRequest request)
         {
-            DataSourceResult result = this.articles.GetAll().To<ArticleViewModel>().ToDataSourceResult(request);
+            var result = this.articles.GetAll().To<ArticleViewModel>();
 
-            return this.Json(result);
+            // return this.Json(result);
+            return this.Json(result.ToDataSourceResult(request, this.ModelState));
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
@@ -44,7 +45,8 @@
                 this.articles.Update(entity);
             }
 
-            return this.Json(new[] { article }.ToDataSourceResult(request, this.ModelState));
+            var result = this.articles.GetAll().To<ArticleViewModel>();
+            return this.Json(result.ToDataSourceResult(request, this.ModelState));
         }
 
         [AcceptVerbs(HttpVerbs.Post)]

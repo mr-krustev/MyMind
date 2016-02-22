@@ -11,7 +11,7 @@
       .Columns(columns =>
       {
           columns.Bound(c => c.Title);
-          columns.Bound(c => c.Topic.Value).Title("Topic");
+          columns.Bound(c => c.TopicName).Title("Topic");
           columns.Bound(c => c.IsPrivate).Title("Private");
           columns.Bound(c => c.CreatedOn).Title("Created On");
           columns.Bound(c => c.ModifiedOn).Title("Modified On");
