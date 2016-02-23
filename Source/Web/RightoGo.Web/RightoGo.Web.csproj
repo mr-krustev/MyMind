@@ -210,10 +210,6 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\Administration\Controllers\AdminArticlesController.cs" />
-    <Compile Include="Areas\Administration\Controllers\AdminUniversitiesController.cs" />
-    <Compile Include="Areas\Administration\Models\AdminUniversityCreateModel.cs" />
-    <Compile Include="Areas\Administration\Models\AdminUniversityInputModel.cs" />
-    <Compile Include="Areas\Administration\Models\AdminUniversityViewModel.cs" />
     <Compile Include="Areas\Administration\Models\ArticleInputModel.cs" />
     <Compile Include="Areas\Administration\Models\ArticleViewModel.cs" />
     <Compile Include="Areas\Student\Controllers\LikesController.cs" />
@@ -330,7 +326,6 @@
     <Content Include="Areas\Student\Views\Works\Details.cshtml" />
     <Content Include="Areas\Student\Views\Works\Add.cshtml" />
     <Content Include="Areas\Student\Views\Shared\TinyMCEPartial.cshtml" />
-    <Content Include="Areas\Administration\Views\AdminUniversities\Index.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />
@@ -568,7 +563,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administration\Views\Shared\" />
     <Folder Include="Areas\Student\Views\Votes\" />
-    <Folder Include="Views\AdminUniversities\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\Teachers\" />
   </ItemGroup>

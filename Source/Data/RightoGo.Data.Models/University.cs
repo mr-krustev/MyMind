@@ -9,7 +9,6 @@
     {
         [Required]
         [Index(IsUnique = true)]
-        [MinLength(2)]
         [MaxLength(100)]
         public string Name { get; set; }
     }
