@@ -6,7 +6,7 @@
             @if (Model.Page - 1 > 0)
             {
                 <li>
-                    <a href="#" aria-label="Previous">
+                    <a href="@Url.Action(Model.ActionName, Model.ControllerName,new { area = Model.AreaName, page = Model.Page-1, pageSize = Model.PageSize, filterByTopic = Model.FilterBy, orderBy = Model.OrderBy, sortBy = Model.SortBy, searchInput = Model.SearchInput }, null)" aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
                     </a>
                 </li>
@@ -24,7 +24,7 @@
             @if (Model.Page + 1 <= Model.TotalPages)
             {
                 <li>
-                    <a href="#" aria-label="Next">
+                    <a href="@Url.Action(Model.ActionName, Model.ControllerName,new { area = Model.AreaName, page = Model.Page+1, pageSize = Model.PageSize, filterByTopic = Model.FilterBy, orderBy = Model.OrderBy, sortBy = Model.SortBy, searchInput = Model.SearchInput }, null)" aria-label="Next">
                         <span aria-hidden="true">&raquo;</span>
                     </a>
                 </li>
