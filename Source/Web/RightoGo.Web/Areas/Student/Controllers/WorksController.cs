@@ -19,12 +19,14 @@
         private IWorksServices works;
         private ITopicsServices topics;
 
-        private List<OrderByViewModel> orderByList = new List<OrderByViewModel>() {
+        private List<OrderByViewModel> orderByList = new List<OrderByViewModel>()
+        {
                 new OrderByViewModel() { Value = "asc", Text = "Ascending" },
                 new OrderByViewModel() { Value = "desc", Text = "Descending" }
             };
 
-        private List<SortByViewModel> sortByList = new List<SortByViewModel>() {
+        private List<SortByViewModel> sortByList = new List<SortByViewModel>()
+        {
                 new SortByViewModel() { Value = "name", Text = "Title" },
                 new SortByViewModel() { Value = "date", Text = "Date" }
             };
@@ -36,11 +38,11 @@
         }
 
         [HttpGet]
-        public ActionResult Index(int page = 1, int pageSize = 5, string orderBy = "desc", string sortBy = "date", string filterByTopic = "")
+        public ActionResult Index(int page = 1, int pageSize = 5, string orderBy = "desc", string sortBy = "date", string filterByTopic = "", string searchInput = "")
         {
-            var data = this.works.GetAllPagedSortedOrdered(page, pageSize, orderBy, sortBy, filterByTopic).To<WorkViewModel>().ToList();
+            var data = this.works.GetAllPagedSortedOrdered(page, pageSize, orderBy, sortBy, filterByTopic, searchInput).To<WorkViewModel>().ToList();
 
-            var totalPages = this.works.GetFiltered(filterByTopic).Count() / pageSize;
+            var totalPages = this.works.GetFilteredAndSearched(filterByTopic, searchInput).Count() / pageSize;
 
             var viewModel = new IndexViewModel()
             {

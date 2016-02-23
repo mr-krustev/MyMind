@@ -8,7 +8,7 @@
     {
         IQueryable<Work> GetAll();
 
-        IQueryable<Work> GetAllPagedSortedOrdered(int page, int pageSize, string orderBy, string sortBy, string filterByTopic);
+        IQueryable<Work> GetAllPagedSortedOrdered(int page, int pageSize, string orderBy, string sortBy, string filterByTopic, string searchInput);
 
         IQueryable<Work> GetById(int id);
 
@@ -18,6 +18,6 @@
 
         IQueryable<Work> Add(Work work);
 
-        IQueryable<Work> GetFiltered(string filterByTopic);
+        IQueryable<Work> GetFilteredAndSearched(string filterByTopic, string searchInput);
     }
 }

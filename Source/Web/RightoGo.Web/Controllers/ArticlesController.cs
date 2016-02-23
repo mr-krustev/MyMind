@@ -15,15 +15,17 @@
     {
         private IArticlesServices articles;
 
-        private List<OrderByViewModel> orderByList = new List<OrderByViewModel>() {
-                new OrderByViewModel() { Value = "asc", Text = "Ascending" },
-                new OrderByViewModel() { Value = "desc", Text = "Descending" }
-            };
+        private List<OrderByViewModel> orderByList = new List<OrderByViewModel>()
+        {
+            new OrderByViewModel() { Value = "asc", Text = "Ascending" },
+            new OrderByViewModel() { Value = "desc", Text = "Descending" }
+        };
 
-        private List<SortByViewModel> sortByList = new List<SortByViewModel>() {
-                new SortByViewModel() { Value = "name", Text = "Title" },
-                new SortByViewModel() { Value = "date", Text = "Dates" }
-            };
+        private List<SortByViewModel> sortByList = new List<SortByViewModel>()
+        {
+            new SortByViewModel() { Value = "name", Text = "Title" },
+            new SortByViewModel() { Value = "date", Text = "Dates" }
+        };
 
         public ArticlesController(IArticlesServices articles)
         {

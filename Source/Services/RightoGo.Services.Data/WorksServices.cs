@@ -34,7 +34,7 @@
             throw new NotImplementedException();
         }
 
-        public IQueryable<Work> GetAllPagedSortedOrdered(int page, int pageSize, string orderBy, string sortBy, string filterByTopic)
+        public IQueryable<Work> GetAllPagedSortedOrdered(int page, int pageSize, string orderBy, string sortBy, string filterByTopic, string searchInput)
         {
             var result = this.works.All();
 
@@ -47,6 +47,7 @@
 
             // TODO: Fix OrderBy to work.
             return result
+                .Where(w => w.Title.Contains(searchInput) || w.Content.Contains(searchInput))
                 .OrderBy(sort + " " + orderBy)
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize);
@@ -67,7 +68,7 @@
             throw new NotImplementedException();
         }
 
-        public IQueryable<Work> GetFiltered(string filterByTopic)
+        public IQueryable<Work> GetFilteredAndSearched(string filterByTopic, string searchInput)
         {
             var result = this.works.All();
 
@@ -76,7 +77,8 @@
                 result = result.Where(a => a.Topic.Value == filterByTopic);
             }
 
-            return result;
+            return result
+                .Where(w => w.Title.Contains(searchInput) || w.Content.Contains(searchInput));
         }
     }
 }
