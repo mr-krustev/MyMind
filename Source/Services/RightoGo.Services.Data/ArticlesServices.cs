@@ -33,7 +33,7 @@
             this.articles.Save();
         }
 
-        public void Delete (Article article)
+        public void Delete(Article article)
         {
             this.articles.Delete(article);
             this.articles.Save();
@@ -52,7 +52,7 @@
 
             // TODO: Fix OrderBy to work.
             return result
-                .OrderBy("Title", orderBy)
+                .OrderBy(sort + " " + orderBy)
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize);
         }

@@ -24,7 +24,7 @@
 
         public bool IsPrivate { get; set; }
 
-        public int? LikesCount { get; set; }
+        public int LikesCount { get; set; }
 
         public DateTime CreatedOn { get; set; }
 
@@ -41,7 +41,7 @@
             configuration.CreateMap<Work, WorksViewModel>()
                  .ForMember(a => a.TopicName, opt => opt.MapFrom(x => x.Topic.Value))
                  .ForMember(a => a.UserName, opt => opt.MapFrom(x => x.CreatedBy.UserName))
-                 .ForMember(a => a.LikesCount, opt => opt.MapFrom(x => x.Likes.Sum(l => (int)l.Type)));
+                 .ForMember(a => a.LikesCount, opt => opt.MapFrom(x => x.Likes.Any() ? x.Likes.Sum(l => (int)l.Type) : 0));
         }
     }
 }

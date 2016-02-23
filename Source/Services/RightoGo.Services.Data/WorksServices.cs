@@ -46,7 +46,7 @@
 
             // TODO: Fix OrderBy to work.
             return result
-                .OrderBy("Title", orderBy)
+                .OrderBy(sort + " " + orderBy)
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize);
         }
@@ -58,7 +58,7 @@
 
         public IQueryable<Work> GetById(int id)
         {
-            throw new NotImplementedException();
+            return this.works.All().Where(w => w.Id == id);
         }
 
         public void Update(Work work)

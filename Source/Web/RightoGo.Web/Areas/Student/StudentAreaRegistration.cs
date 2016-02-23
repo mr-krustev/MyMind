@@ -1,7 +1,7 @@
-﻿using System.Web.Mvc;
-
-namespace RightoGo.Web.Areas.Student
+﻿namespace RightoGo.Web.Areas.Student
 {
+    using System.Web.Mvc;
+
     public class StudentAreaRegistration : AreaRegistration 
     {
         public override string AreaName 

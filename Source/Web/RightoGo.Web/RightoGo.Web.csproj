@@ -204,6 +204,7 @@
     <Compile Include="Areas\Administration\Controllers\AdminArticlesController.cs" />
     <Compile Include="Areas\Administration\Models\ArticleInputModel.cs" />
     <Compile Include="Areas\Administration\Models\ArticleViewModel.cs" />
+    <Compile Include="Areas\Student\Controllers\LikesController.cs" />
     <Compile Include="Areas\Student\Controllers\WorksController.cs" />
     <Compile Include="Areas\Student\Models\IndexViewModel.cs" />
     <Compile Include="Areas\Student\Models\WorkViewModel.cs" />
@@ -303,6 +304,7 @@
     <Content Include="Areas\Student\Views\web.config" />
     <Content Include="Areas\Student\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Student\Views\Shared\Index.cshtml" />
+    <Content Include="Areas\Student\Views\Works\Details.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />
@@ -367,7 +369,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administration\Views\Shared\" />
-    <Folder Include="Areas\Student\Views\Works\" />
+    <Folder Include="Areas\Student\Views\Votes\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>

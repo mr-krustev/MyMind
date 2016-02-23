@@ -19,7 +19,7 @@
 
     }
 
-    @using (Html.BeginForm("All", "Articles", new { sortBy = Model.PagingInfo.SortBy, orderBy = Model.PagingInfo.OrderBy }, FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+    @using (Html.BeginForm("Index", "Works", new { sortBy = Model.PagingInfo.SortBy, orderBy = Model.PagingInfo.OrderBy }, FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
     {
         <!--Add sortBy, etc-->
         <div class="form-group">
@@ -51,11 +51,11 @@
 {
     <div class="jumbotron">
         <h3>
-            @Html.ActionLink((string)work.Title, "Details", "Articles", new { area = string.Empty, id = work.Id }, null)
+            @Html.ActionLink((string)work.Title, "Details", "Works", new { area = "Student", id = work.Id }, null)
         </h3>
         <br />
         <small>
-            @Html.ActionLink((string)work.TopicName, "All", "Articles", new { area = string.Empty, filterByTopic = work.TopicName }, null)
+            @Html.ActionLink((string)work.TopicName, "Index", "Works", new { area = "Student", filterByTopic = work.TopicName }, null)
         </small>
         <br />
         <div class="more">
