@@ -68,5 +68,7 @@
                 }
             }
         }
+
+        public System.Data.Entity.DbSet<RightoGo.Data.Models.University> Universities { get; set; }
     }
 }

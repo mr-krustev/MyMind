@@ -1,15 +1,19 @@
-﻿namespace RightoGo.Data.Models
+﻿namespace RightoGo.Web.Areas.Administration.Models
 {
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    using Common.Models;
+    using Data.Models;
+    using Infrastructure.Mapping;
 
-    public class University : BaseModel<int>
+    public class AdminUniversityInputModel
     {
         [Required]
+        public int Id { get; set; }
+
+        [Required]
         [Index(IsUnique = true)]
-        [MinLength(2)]
+        [MinLength(5)]
         [MaxLength(100)]
         public string Name { get; set; }
     }

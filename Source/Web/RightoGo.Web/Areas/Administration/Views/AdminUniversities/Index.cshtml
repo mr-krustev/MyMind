@@ -1,21 +1,22 @@
 ﻿@using Kendo.Mvc.UI
 
 @{
-    ViewBag.Title = "Articles Administration";
+    ViewBag.Title = "University Administration";
 }
 
 <h1>@ViewBag.Title</h1>
 
-@(Html.Kendo().Grid<RightoGo.Web.Areas.Administration.Models.ArticleViewModel>()
+@(Html.Kendo().Grid<RightoGo.Web.Areas.Administration.Models.AdminUniversityViewModel>()
       .Name("grid")
       .Columns(columns =>
       {
-          columns.Bound(c => c.Title);
-          columns.Bound(c => c.TopicName).Title("Topic");
-          columns.Bound(c => c.CreatedOn).Title("Created On");
-          columns.Bound(c => c.ModifiedOn).Title("Modified On");
-          columns.Bound(c => c.CreatorName).Title("Creator");
-          columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
+        columns.Bound(c => c.Name);
+        columns.Bound(c => c.CreatedOn);
+        columns.Bound(c => c.ModifiedOn);
+        columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
+      })
+      .ToolBar(toolbar => {
+            toolbar.Create();
       })
       .Editable(editable =>
       {
@@ -23,20 +24,19 @@
           editable.DisplayDeleteConfirmation("Are you completely sure?");
       })
       .Pageable()
-      .Sortable(sortable =>
-      {
+      .Sortable(sortable => {
           sortable.SortMode(GridSortMode.SingleColumn);
       })
-      .Filterable()
       .Scrollable()
       .DataSource(dataSource => dataSource
           .Ajax()
           .Events(events => events.Error("grid_error"))
           .Events(events => events.RequestEnd("handle_End"))
           .Model(model => model.Id(p => p.Id))
-          .Read(read => read.Action("Articles_Read", "AdminArticles"))
-          .Update(update => update.Action("Articles_Update", "AdminArticles"))
-          .Destroy(destroy => destroy.Action("Articles_Destroy", "AdminArticles"))
+          .Read(read => read.Action("Universities_Read", "AdminUniversities"))
+          .Create(create => create.Action("Universities_Create", "AdminUniversities"))
+          .Update(update => update.Action("Universities_Update", "AdminUniversities"))
+          .Destroy(destroy => destroy.Action("Universities_Destroy", "AdminUniversities"))
       )
 )
 
