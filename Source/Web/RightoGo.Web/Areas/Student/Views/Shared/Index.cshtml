@@ -6,66 +6,29 @@
 <br />
 @*Add sort/order/filter*@
 
-<div>
-    @{
-        List<SelectListItem> orderByList = new List<SelectListItem>() {
-                new SelectListItem() { Value = "asc", Text = "Ascending" },
-                new SelectListItem() { Value = "desc", Text = "Descending"                }
-            };
-
-        List<SelectListItem> sortByList = new List<SelectListItem>();
-        sortByList.Add(new SelectListItem() { Value = "name", Text = "Title" });
-        sortByList.Add(new SelectListItem() { Value = "date", Text = "Dates" });
-
-    }
-
-    @using (Html.BeginForm("Index", "Works", new { sortBy = Model.PagingInfo.SortBy, orderBy = Model.PagingInfo.OrderBy }, FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+@Html.Partial("_SearchPartial", Model.PagingInfo)
+<br />
+<br />
+<div class="container">
+    @foreach (var work in Model.Works)
     {
-        <!--Add sortBy, etc-->
-        <div class="form-group">
-            @Html.LabelFor(m => Model.PagingInfo.SortBy, "Sort By:", new { @class = "col-md-1 control-label" })
-            <div class="col-md-10">
-                @Html.DropDownList("SortBy", sortByList, new { @class = "form-control" })
+        <div class="jumbotron">
+            <h3>
+                @Html.ActionLink((string)work.Title, "Details", "Works", new { area = "Student", id = work.Id }, null)
+            </h3>
+            <br />
+            <small>
+                @Html.ActionLink((string)work.TopicName, "Index", "Works", new { area = "Student", filterByTopic = work.TopicName }, null)
+            </small>
+            <br />
+            <div class="more">
+                @Html.Raw(work.SanitizedContent)
             </div>
+            <br />
+            <small>@work.CreatedBy.UserName has writen this on @work.CreatedOnFormatted</small>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(m => Model.PagingInfo.OrderBy, "Order By:", new { @class = "col-md-1 control-label" })
-            <div class="col-md-10">
-                @Html.DropDownList("OrderBy", orderByList, new { @class = "form-control" })
-            </div>
-        </div>
-
-        @*<div class="form-group">
-                @Html.LabelFor(m => Model.PagingInfo.SearchInput, "Search:", new { @class = "col-md-1 control-label" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(m => Model.SearchInput, null, new { @class = "form-control" })
-                </div>
-            </div>*@
-        <input class="btn btn-default" type="submit" value="Search" />
     }
-    <br />
 </div>
-
-@foreach (var work in Model.Works)
-{
-    <div class="jumbotron">
-        <h3>
-            @Html.ActionLink((string)work.Title, "Details", "Works", new { area = "Student", id = work.Id }, null)
-        </h3>
-        <br />
-        <small>
-            @Html.ActionLink((string)work.TopicName, "Index", "Works", new { area = "Student", filterByTopic = work.TopicName }, null)
-        </small>
-        <br />
-        <div class="more">
-            @Html.Raw(work.SanitizedContent)
-        </div>
-        <br />
-        <small>@work.CreatedBy.UserName has writen this on @work.CreatedOnFormatted</small>
-    </div>
-}
-
 @Html.Partial("_PagingPartial", @Model.PagingInfo)
 
 @section scripts {

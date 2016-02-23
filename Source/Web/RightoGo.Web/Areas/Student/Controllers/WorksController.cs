@@ -1,5 +1,6 @@
 ﻿namespace RightoGo.Web.Areas.Student.Controllers
 {
+    using System.Collections.Generic;
     using System.Linq;
     using System.Web;
     using System.Web.Mvc;
@@ -17,6 +18,16 @@
     {
         private IWorksServices works;
         private ITopicsServices topics;
+
+        private List<OrderByViewModel> orderByList = new List<OrderByViewModel>() {
+                new OrderByViewModel() { Value = "asc", Text = "Ascending" },
+                new OrderByViewModel() { Value = "desc", Text = "Descending" }
+            };
+
+        private List<SortByViewModel> sortByList = new List<SortByViewModel>() {
+                new SortByViewModel() { Value = "name", Text = "Title" },
+                new SortByViewModel() { Value = "date", Text = "Date" }
+            };
 
         public WorksController(IWorksServices works, ITopicsServices topics)
         {
@@ -38,10 +49,13 @@
                 {
                     ActionName = "Index",
                     AreaName = "Student",
+                    ControllerName = "Works",
                     Page = page,
                     PageSize = pageSize,
                     OrderBy = orderBy,
                     SortBy = sortBy,
+                    OrderByList = this.orderByList,
+                    SortByList = this.sortByList,
                     FilterBy = filterByTopic,
                     TotalPages = totalPages
                 }
