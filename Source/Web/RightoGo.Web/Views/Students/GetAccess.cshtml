@@ -1,0 +1,38 @@
+﻿@model RightoGo.Web.ViewModels.Students.StudentInputModel
+
+<h2>
+    Hello, @this.User.Identity.Name! You can find below what students are able to do once they receive their student's access.
+</h2>
+
+<div class="">
+    Students can add their own works to their profiles - this way they can post their essays on different topics and share thoughts and knowledge with their peers. Another cool feature is that students can also vote other students' works and thus distinguish between good ones and bad ones. They can easily search for specific works. They can take parts in tests and receive grades.
+</div>
+
+@using (Html.BeginForm("RequestAccess", "Students", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <h4>Access Form.</h4>
+    <hr />
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(m => m.Faculty, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Faculty, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Specialty, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Specialty, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="Get Student Access" />
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -11,6 +11,6 @@
 
         IQueryable<User> GetById(string id);
 
-
+        void Upate(User user);
     }
 }

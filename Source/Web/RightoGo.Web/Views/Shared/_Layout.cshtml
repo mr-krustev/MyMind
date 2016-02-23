@@ -25,6 +25,20 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Articles", "All", "Articles", new { area = string.Empty }, null)</li>
+
+                    @if (this.User.Identity.IsAuthenticated && this.User.IsInRole("Student"))
+                    {
+                        <li>@Html.ActionLink("Works", "Index", "Works", new { area = "Student" }, null)</li>
+                    }
+
+                    @if (this.User.Identity.IsAuthenticated && !this.User.IsInRole("Student") && !this.User.IsInRole("Teacher") && !this.User.IsInRole("Administrator"))
+                    {
+                        <li>@Html.ActionLink("Get Student Access", "GetAccess", "Students", new { area = string.Empty }, null)</li>
+                    }
+                    @if (this.User.Identity.IsAuthenticated && !this.User.IsInRole("Teacher") && !this.User.IsInRole("Administrator"))
+                    {
+                        <li>@Html.ActionLink("Get Teacher Access", "GetAccess", "Teachers", new { area = string.Empty }, null)</li>
+                    }
                     @Html.Partial("_AdminLinksPartial")
                 </ul>
                 @Html.Partial("_LoginPartial")

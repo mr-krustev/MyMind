@@ -1,9 +1,10 @@
-﻿@model RightoGo.Web.ViewModels.Shared.ErrorOccurredViewModel
+﻿@model HandleErrorInfo
 
 @{
     ViewBag.Title = "Error";
 }
 
-<h1 class="text-danger">Error.</h1>
-<h2 class="text-danger">@Model.ErrorMessage</h2>
-
+<hgroup class="text-danger">
+    <h1 class="text-error">An error occurred while processing your request.</h1>
+    <h2 class="text-error">@Model.Exception.Message</h2>
+</hgroup>

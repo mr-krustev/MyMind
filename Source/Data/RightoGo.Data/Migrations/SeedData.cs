@@ -206,6 +206,7 @@
                     AvatarUrl = defaultAvatar,
                     FirstName = "Toshko",
                     LastName = "Goshkov",
+                    SecurityStamp = Guid.NewGuid().ToString()
                 };
 
                 user.UniversityId = this.universities[this.random.Next(0, this.universities.Count)].Id;

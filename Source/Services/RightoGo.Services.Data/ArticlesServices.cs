@@ -48,8 +48,11 @@
                 result = result.Where(a => a.Topic.Value == filterByTopic);
             }
 
+            var sort = this.sortValues[sortBy];
+
+            // TODO: Fix OrderBy to work.
             return result
-                .OrderBy(this.sortValues[sortBy], orderBy)
+                .OrderBy("Title", orderBy)
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize);
         }
@@ -79,6 +82,5 @@
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize);
         }
-       
     }
 }

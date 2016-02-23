@@ -68,6 +68,7 @@
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
+            this.SignInManager.AuthenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie);
             this.ViewBag.ReturnUrl = returnUrl;
             return this.View();
         }
@@ -85,6 +86,7 @@
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
+
             var result =
                 await
                 this.SignInManager.PasswordSignInAsync(

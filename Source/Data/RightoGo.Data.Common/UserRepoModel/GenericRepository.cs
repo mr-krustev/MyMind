@@ -67,5 +67,16 @@ namespace RightoGo.Data.Common.UserRepoModel
         {
             this.Context.SaveChanges();
         }
+
+        public void Update(T entity)
+        {
+            DbEntityEntry entry = this.Context.Entry(entity);
+            if (entry.State == EntityState.Detached)
+            {
+                this.DbSet.Attach(entity);
+            }
+
+            entry.State = EntityState.Modified;
+        }
     }
 }

@@ -31,5 +31,11 @@
         {
             return this.users.All().Where(u => u.Id == id);
         }
+
+        public void Upate(User user)
+        {
+            this.users.Update(user);
+            this.users.SaveChanges();
+        }
     }
 }

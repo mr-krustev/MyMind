@@ -2,6 +2,7 @@
 {
     using System;
     using System.Linq;
+    using System.Web;
     using System.Web.Mvc;
 
     using Infrastructure.Mapping;
@@ -51,22 +52,14 @@
         {
             if (id == null)
             {
-                var errorViewModel = new ErrorOccurredViewModel();
-
-                errorViewModel.ErrorMessage = "Oops, we could not find what you were looking for!";
-                return this.View("Error", errorViewModel);
+                throw new HttpException(404,"Oooooops, something went wrong!");
             }
 
             var viewModel = this.articles.GetById((int)id).To<ArticleViewModel>().FirstOrDefault();
 
             if (viewModel == null)
             {
-                var errorViewModel = new ErrorOccurredViewModel();
-
-                errorViewModel.ErrorMessage = "Oops, we could not find what you were looking for!";
-                errorViewModel.BackUrl = this.Request.Url.AbsoluteUri;
-
-                return this.View("Error", errorViewModel);
+                throw new HttpException(404, "Oooooops, we could not find what you were looking for!");
             }
 
             return this.View(viewModel);
