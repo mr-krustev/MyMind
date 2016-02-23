@@ -4,15 +4,15 @@
     using System.Web;
     using System.Web.Mvc;
 
-    using Ganss.XSS;
+    using Data.Models;
     using Infrastructure.Mapping;
+    using Microsoft.AspNet.Identity;
     using Models;
     using Services.Data.Contracts;
     using ViewModels.Shared;
     using Web.Controllers;
-    using Data.Models;
-    using Microsoft.AspNet.Identity;
-    [Authorize(Roles = "Student")]
+
+    [Authorize(Roles = "Student, Administrator")]
     public class WorksController : BaseController
     {
         private IWorksServices works;

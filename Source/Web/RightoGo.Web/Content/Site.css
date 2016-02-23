@@ -35,3 +35,17 @@ textarea {
 span.glyphicon {
     cursor: pointer;
 }
+
+.centered {
+    text-align : center;
+    vertical-align: middle;
+}
+
+.like-controls {
+   width: auto;
+    min-width: 25px;
+    max-width: 25px;
+    height: auto;
+    min-height: 25px;
+    max-height: 25px;
+}

@@ -217,6 +217,7 @@
     <Compile Include="Areas\Student\Models\AddWorkViewModel.cs" />
     <Compile Include="Areas\Student\Models\IndexViewModel.cs" />
     <Compile Include="Areas\Student\Models\AddWorkInputModel.cs" />
+    <Compile Include="Areas\Student\Models\LikeViewModel.cs" />
     <Compile Include="Areas\Student\Models\TopicViewModel.cs" />
     <Compile Include="Areas\Student\Models\WorkViewModel.cs" />
     <Compile Include="Areas\Student\StudentAreaRegistration.cs" />
@@ -288,6 +289,10 @@
     <Content Include="Content\Errors\404.html" />
     <Content Include="Content\Errors\500.aspx" />
     <Content Include="Content\Errors\500.html" />
+    <Content Include="Content\imgs\e-dislike-not-selected.png" />
+    <Content Include="Content\imgs\e-dislike-selected.png" />
+    <Content Include="Content\imgs\e-like-not-selected.png" />
+    <Content Include="Content\imgs\e-like-selected.png" />
     <Content Include="Content\KendoUI\kendo.common.min.css" />
     <Content Include="Content\KendoUI\kendo.default.min.css" />
     <Content Include="Content\toastr.css" />

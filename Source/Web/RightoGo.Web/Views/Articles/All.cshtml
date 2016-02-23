@@ -19,33 +19,34 @@
 
     }
 
-    @using (Html.BeginForm("All", "Articles", new { sortBy = Model.PagingInfo.SortBy, orderBy = Model.PagingInfo.OrderBy }, FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+    @using (Html.BeginForm("All", "Articles", new { sortBy = Model.PagingInfo.SortBy, orderBy = Model.PagingInfo.OrderBy, searchInput = Model.PagingInfo.SearchInput }, FormMethod.Get, new { @class = "form-inline", role = "form" }))
     {
         <!--Add sortBy, etc-->
-        <div class="form-group">
-            @Html.LabelFor(m => Model.PagingInfo.SortBy, "Sort By:", new { @class = "col-md-1 control-label" })
-            <div class="col-md-10">
+        <div class="form-group col-md-2">
+            @Html.LabelFor(m => Model.PagingInfo.SortBy, "Sort By:", new { @class = "col-md-12 control-label" })
+            <div class="col-md-4">
                 @Html.DropDownList("SortBy", sortByList, new { @class = "form-control" })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(m => Model.PagingInfo.OrderBy, "Order By:", new { @class = "col-md-1 control-label" })
-            <div class="col-md-10">
+        <div class="form-group col-md-2">
+            @Html.LabelFor(m => Model.PagingInfo.OrderBy, "Order By:", new { @class = "col-md-12 control-label" })
+            <div class="col-md-8">
                 @Html.DropDownList("OrderBy", orderByList, new { @class = "form-control" })
             </div>
         </div>
-
-        @*<div class="form-group">
-                @Html.LabelFor(m => Model.PagingInfo.SearchInput, "Search:", new { @class = "col-md-1 control-label" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(m => Model.SearchInput, null, new { @class = "form-control" })
-                </div>
-            </div>*@
-        <input class="btn btn-default" type="submit" value="Search" />
+        <div class="form-group cold-md-8 pull-right">
+            @Html.LabelFor(m => Model.PagingInfo.SearchInput, "Search:", new { @class = "col-md-12 control-label"})
+            <div class="col-md-8">
+                @Html.TextBoxFor(m => m.PagingInfo.SearchInput, null, new { @class = "form-control", Name = "searchInput" })
+            </div>
+            <input class="btn btn-default" type="submit" value="Search" />
+        </div>
     }
     <br />
 </div>
+<br />
+<br />
 
 @foreach (var article in Model.Articles)
 {

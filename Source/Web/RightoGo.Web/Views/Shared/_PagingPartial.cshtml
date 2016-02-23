@@ -18,7 +18,7 @@
                 className = "active";
             }
 
-            <li class="@className">@Html.ActionLink(i.ToString(), Model.ActionName, new { area = Model.AreaName, page = i, pageSize = Model.PageSize, filterByTopic = Model.FilterBy, orderBy = Model.OrderBy, sortBy = Model.SortBy }, null)</li>
+            <li class="@className">@Html.ActionLink(i.ToString(), Model.ActionName, new { area = Model.AreaName, page = i, pageSize = Model.PageSize, filterByTopic = Model.FilterBy, orderBy = Model.OrderBy, sortBy = Model.SortBy, searchInput = Model.SearchInput }, null)</li>
         }
         @if (Model.Page + 1 <= Model.TotalPages)
             {

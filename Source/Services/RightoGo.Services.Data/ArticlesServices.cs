@@ -39,7 +39,7 @@
             this.articles.Save();
         }
 
-        public IQueryable<Article> GetAllPagedFilteredSorted(int page, int pageSize, string filterByTopic, string orderBy, string sortBy)
+        public IQueryable<Article> GetAllPagedFilteredSorted(int page, int pageSize, string filterByTopic, string orderBy, string sortBy, string searchInput)
         {
             var result = this.articles.All();
 
@@ -52,6 +52,7 @@
 
             // TODO: Fix OrderBy to work.
             return result
+                .Where(a => a.Title.Contains(searchInput) || a.Content.Contains(searchInput))
                 .OrderBy(sort + " " + orderBy)
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize);
@@ -81,6 +82,18 @@
                 .OrderByDescending(a => a.CreatedOn)
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize);
+        }
+
+        public IQueryable<Article> GetFilteredAndSearched(string filterByTopic, string searchInput)
+        {
+            var result = this.articles.All();
+
+            if (filterByTopic != string.Empty && filterByTopic != null)
+            {
+                result = result.Where(a => a.Topic.Value == filterByTopic);
+            }
+
+            return result.Where(a => a.Content.Contains(searchInput) || a.Title.Contains(searchInput));
         }
     }
 }

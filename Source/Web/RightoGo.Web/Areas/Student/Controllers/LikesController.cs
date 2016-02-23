@@ -6,11 +6,12 @@
     using System.Web;
     using System.Web.Mvc;
 
-    using Microsoft.AspNet.Identity;
-    using RightoGo.Web.Controllers;
-    using Services.Data.Contracts;
     using Data.Models;
-    [Authorize(Roles = "Student")]
+    using Microsoft.AspNet.Identity;
+    using Services.Data.Contracts;
+    using Web.Controllers;
+
+    [Authorize(Roles = "Student, Administrator")]
     public class LikesController : BaseController
     {
         private ILikesServices likes;

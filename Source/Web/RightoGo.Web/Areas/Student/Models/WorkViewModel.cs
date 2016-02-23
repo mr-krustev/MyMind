@@ -50,6 +50,8 @@
 
         public int LikesCount { get; set; }
 
+        public IEnumerable<LikeViewModel> Likes { get; set;}
+
         public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<Work, WorkViewModel>()

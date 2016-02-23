@@ -1,4 +1,4 @@
-﻿@if (this.User.Identity.IsAuthenticated && this.User.IsInRole("Student"))
+﻿@if (this.User.Identity.IsAuthenticated && (this.User.IsInRole("Student") || this.User.IsInRole("Administrator")))
 {
     <li class="dropdown">
         <a href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle">Works<span class="caret"></span></a>

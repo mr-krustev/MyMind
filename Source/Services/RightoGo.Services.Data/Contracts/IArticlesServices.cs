@@ -12,13 +12,15 @@
 
         IQueryable<Article> GetAll();
 
-        IQueryable<Article> GetAllPagedFilteredSorted(int page, int pageSize, string filterByTopic, string orderBy, string sortBy);
+        IQueryable<Article> GetAllPagedFilteredSorted(int page, int pageSize, string filterByTopic, string orderBy, string sortBy, string searchInput);
 
         IQueryable<Article> GetPaged(int page, int size);
 
         IQueryable<Article> GetFiltered(string filterByTopic);
 
-        IQueryable<Article> GetById(int id);
+        IQueryable<Article> GetFilteredAndSearched(string filterByTopic, string searchInput);
         
+        IQueryable<Article> GetById(int id);
+
     }
 }

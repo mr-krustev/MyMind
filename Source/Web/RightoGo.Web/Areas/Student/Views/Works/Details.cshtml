@@ -6,13 +6,41 @@
 
 <div class="jumbotron">
     <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-2 centered table-bordered">
             <div>
-                <span class="glyphicon glyphicon-thumbs-up" data-id="@Model.Id" data-action="up" aria-hidden="true"></span>
+                <span data-id="@Model.Id" data-action="up">
+                    @{
+                        var src = "~../../../../../Content/imgs/e-like-";
+                        if (Model.Likes.Any(l => l.VoterName == this.User.Identity.Name && l.VoteType == 1))
+                        {
+                            src += "selected.png";
+                        }
+                        else
+                        {
+                            src += "not-selected.png";
+                        }
+
+                        <img data-id="@Model.Id" data-info="like" src="@src" class="like-controls" />
+                    }
+                </span>
             </div>
             <div>Likes: <span class="badge" data-id="@Model.Id" data-action="likesCount">@Model.LikesCount</span></div>
             <div>
-                <span class="glyphicon glyphicon-thumbs-down" data-id="@Model.Id" data-action="down" aria-hidden="true"></span>
+                <span data-id="@Model.Id" data-action="down">
+                    @{
+                        src = "~../../../../../Content/imgs/e-dislike-";
+                        if (Model.Likes.Any(l => l.VoterName == this.User.Identity.Name && l.VoteType == -1))
+                        {
+                            src += "selected.png";
+                        }
+                        else
+                        {
+                            src += "not-selected.png";
+                        }
+
+                        <img data-id="@Model.Id" data-info="dislike" src="@src" class="like-controls" />
+                    }
+                </span>
             </div>
         </div>
         <div class="col-md-10">
@@ -40,6 +68,17 @@
                 function (data) {
                     var newLikesCount = data.Count;
                     $("span[data-action='likesCount'][data-id='" + id + "']").html(newLikesCount);
+                    var src = $("img[data-info='dislike'][data-id='" + id + "']").attr('src');
+
+                    if (src.indexOf("not-selected") > 0) {
+                        // If dislike is not selected, select dislike.
+                        var result = $("img[data-info='like'][data-id='" + id + "']").attr('src').replace("not-selected", "selected");
+                        $("img[data-info='like'][data-id='" + id + "']").attr('src', result);
+                    } else {
+                        // If dislike is selected, deselect
+                        result = src.replace("selected", "not-selected");
+                        $("img[data-info='dislike'][data-id='" + id + "']").attr('src', result);
+                    }
                 });
 
         });
@@ -49,6 +88,17 @@
                 function (data) {
                     var newLikesCount = data.Count;
                     $("span[data-action='likesCount'][data-id='" + id + "']").html(newLikesCount);
+                    var src = $("img[data-info='like'][data-id='" + id + "']").attr('src');
+
+                    if (src.indexOf("not-selected") > 0) {
+                        // If like is not selected, select dislike.
+                        var result = $("img[data-info='dislike'][data-id='" + id + "']").attr('src').replace("not-selected", "selected");
+                        $("img[data-info='dislike'][data-id='" + id + "']").attr('src', result);
+                    } else {
+                        // If like is selected, deselect
+                        result = src.replace("selected", "not-selected");
+                        $("img[data-info='like'][data-id='" + id + "']").attr('src', result);
+                    }
                 });
 
         });
