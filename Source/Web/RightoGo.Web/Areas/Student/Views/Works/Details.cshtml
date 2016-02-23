@@ -1,0 +1,54 @@
+﻿@model RightoGo.Web.Areas.Student.Models.WorkViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="jumbotron">
+    <div class="row">
+        <div class="col-md-2">
+            <div><span class="glyphicon glyphicon-collapse-up" data-id="@Model.Id" data-action="up" aria-hidden="true"></span></div>
+            <div>Likes: <span class="badge" data-id="@Model.Id" data-action="likesCount">@Model.LikesCount</span></div>
+            <div>
+                <span class="glyphicon glyphicon-collapse-down" data-id="@Model.Id" data-action="down" aria-hidden="true"></span>
+            </div>
+        </div>
+        <div class="col-md-10">
+            <h3>
+                @Html.ActionLink((string)Model.Title, "Details", "Works", new { area = "Students", id = @Model.Id }, null)
+            </h3>
+            <br />
+            <small>
+                @Html.ActionLink((string)Model.TopicName, "Index", "Works", new { area = "Students", filterByTopic = @Model.TopicName }, null)
+            </small>
+            <br />
+            <div class="more">
+                @Model.Content
+            </div>
+            <br />
+            <small>@Model.CreatedBy.UserName has writen this on @Model.CreatedOnFormatted</small>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script>
+        $("span[data-action='up']").click(function () {
+            var id = $(this).attr("data-id");
+            $.post("/Likes/VoteWork", { workId: id, likeType: 1 },
+                function (data) {
+                    var newLikesCount = data.Count;
+                    $("span[data-action='likesCount'][data-id='" + id + "']").html(newLikesCount);
+                });
+
+        });
+        $("span[data-action='down']").click(function () {
+            var id = $(this).attr("data-id");
+            $.post("/Likes/VoteWork", { workId: id, likeType: -1 },
+                function (data) {
+                    var newLikesCount = data.Count;
+                    $("span[data-action='likesCount'][data-id='" + id + "']").html(newLikesCount);
+                });
+
+        });
+    </script>
+}
