@@ -30,5 +30,7 @@
         public IEnumerable<SortByViewModel> SortByList { get; set; }
 
         public string SearchInput { get; set; }
+
+        public IEnumerable<PagingTopicViewModel> Topics { get; set; }
     }
 }

@@ -4,22 +4,29 @@
     @{
         var orderByList = Model.OrderByList.Select(o => new SelectListItem() { Value = o.Value, Text = o.Text });
         var sortByList = Model.SortByList.Select(o => new SelectListItem() { Value = o.Value, Text = o.Text });
+        var filterByTopicList = Model.Topics.Select(o => new SelectListItem() { Value = o.Value, Text = o.Text });
     }
 
-    @using (Html.BeginForm(Model.ActionName, Model.ControllerName, new { sortBy = Model.SortBy, orderBy = Model.OrderBy, searchInput = Model.SearchInput, area = Model.AreaName }, FormMethod.Get, new { @class = "form-inline", role = "form" }))
+    @using (Html.BeginForm(Model.ActionName, Model.ControllerName, new { sortBy = Model.SortBy, filterByTopic = Model.FilterBy, orderBy = Model.OrderBy, searchInput = Model.SearchInput, area = Model.AreaName }, FormMethod.Get, new { @class = "form-inline", role = "form" }))
     {
         <!--Add sortBy, etc-->
         <div class="form-group col-md-2">
             @Html.LabelFor(m => Model.SortBy, "Sort By:", new { @class = "col-md-12 control-label" })
             <div class="col-md-4">
-                @Html.DropDownList("SortBy", sortByList, new { @class = "form-control" })
+                @Html.DropDownList("SortBy", sortByList, new { @class = "form-control", id = "sort-by-list" })
             </div>
         </div>
 
         <div class="form-group col-md-2">
             @Html.LabelFor(m => Model.OrderBy, "Order By:", new { @class = "col-md-12 control-label" })
             <div class="col-md-8">
-                @Html.DropDownList("OrderBy", orderByList, new { @class = "form-control" })
+                @Html.DropDownList("OrderBy", orderByList, new { @class = "form-control", id = "order-by-list" })
+            </div>
+        </div>
+        <div class="form-group col-md-2">
+            @Html.LabelFor(m => Model.FilterBy, "Filter By Topic:", new { @class = "col-md-12 control-label" })
+            <div class="col-md-8">
+                @Html.DropDownList("FilterBy",   filterByTopicList, new { @class = "form-control", id = "filter-by-topic", Name= "filterByTopic" })
             </div>
         </div>
         <div class="form-group cold-md-8 pull-right">
@@ -32,3 +39,21 @@
     }
     <br />
 </div>
+
+<script>
+    $('#sort-by-list').on('change', function (event) {
+        var form = $(event.target).parents('form');
+
+        form.submit();
+    });
+    $('#order-by-list').on('change', function (event) {
+        var form = $(event.target).parents('form');
+
+        form.submit();
+    });
+    $('#filter-by-topic').on('change', function (event) {
+        var form = $(event.target).parents('form');
+
+        form.submit();
+    });
+</script>

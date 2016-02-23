@@ -14,6 +14,7 @@
     public class ArticlesController : BaseController
     {
         private IArticlesServices articles;
+        private ITopicsServices topics;
 
         private List<OrderByViewModel> orderByList = new List<OrderByViewModel>()
         {
@@ -27,15 +28,18 @@
             new SortByViewModel() { Value = "date", Text = "Dates" }
         };
 
-        public ArticlesController(IArticlesServices articles)
+        public ArticlesController(IArticlesServices articles, ITopicsServices topics)
         {
             this.articles = articles;
+            this.topics = topics;
         }
 
         [HttpGet]
         public ActionResult All(int page = 1, int pageSize = 5, string filterByTopic = "", string orderBy = "desc", string sortBy = "date", string searchInput = "")
         {
             IEnumerable<ArticleViewModel> articleData;
+            var topicsData = this.topics.GetAll().To<PagingTopicViewModel>().ToList();
+            topicsData.Insert(0, new PagingTopicViewModel() { Value = string.Empty, Text = "None" });
             int totalPages;
 
             if (this.HttpContext.Cache["All_Articles_" + page + "_" + pageSize + "_" + orderBy + "_" + sortBy] != null
@@ -73,6 +77,7 @@
                     OrderBy = orderBy,
                     OrderByList = this.orderByList,
                     SortByList = this.sortByList,
+                    Topics = topicsData,
                     FilterBy = filterByTopic,
                     SortBy = sortBy,
                     TotalPages = totalPages,

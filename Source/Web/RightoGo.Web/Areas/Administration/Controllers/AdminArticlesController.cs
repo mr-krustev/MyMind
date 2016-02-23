@@ -8,7 +8,7 @@
     using Infrastructure.Mapping;
     using Kendo.Mvc.Extensions;
     using Kendo.Mvc.UI;
-    using Models;
+    using Models.AdmArti;
     using Services.Data.Contracts;
     using Web.Controllers;
 

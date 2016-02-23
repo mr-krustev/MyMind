@@ -7,7 +7,7 @@
     @Styles.Render("~/Content/KendoCSS")
     @Styles.Render("~/Content/Notifications")
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/kendoJS")
+    @RenderSection("kendo", required: false);
     @Scripts.Render("~/bundles/notifications");
     @Styles.Render("~/Content/css")
 </head>

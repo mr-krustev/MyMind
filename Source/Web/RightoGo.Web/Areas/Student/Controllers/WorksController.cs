@@ -41,6 +41,8 @@
         public ActionResult Index(int page = 1, int pageSize = 5, string orderBy = "desc", string sortBy = "date", string filterByTopic = "", string searchInput = "")
         {
             var data = this.works.GetAllPagedSortedOrdered(page, pageSize, orderBy, sortBy, filterByTopic, searchInput).To<WorkViewModel>().ToList();
+            var topicsData = this.topics.GetAll().To<PagingTopicViewModel>().ToList();
+            topicsData.Insert(0, new PagingTopicViewModel() { Value = string.Empty, Text = "None" });
 
             var totalPages = this.works.GetFilteredAndSearched(filterByTopic, searchInput).Count() / pageSize;
 
@@ -59,7 +61,8 @@
                     OrderByList = this.orderByList,
                     SortByList = this.sortByList,
                     FilterBy = filterByTopic,
-                    TotalPages = totalPages
+                    TotalPages = totalPages,
+                    Topics = topicsData
                 }
             };
 

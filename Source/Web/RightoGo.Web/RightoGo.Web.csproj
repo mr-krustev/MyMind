@@ -210,12 +210,16 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\Administration\Controllers\AdminArticlesController.cs" />
+    <Compile Include="Areas\Administration\Controllers\AdminTopicsController.cs" />
     <Compile Include="Areas\Administration\Controllers\AdminUniversitiesController.cs" />
-    <Compile Include="Areas\Administration\Models\AdminUniversityCreateModel.cs" />
-    <Compile Include="Areas\Administration\Models\AdminUniversityInputModel.cs" />
-    <Compile Include="Areas\Administration\Models\ArticleInputModel.cs" />
-    <Compile Include="Areas\Administration\Models\ArticleViewModel.cs" />
-    <Compile Include="Areas\Administration\Models\AdminUniversityViewModel.cs" />
+    <Compile Include="Areas\Administration\Models\AdmTopic\AdminTopicCreateModel.cs" />
+    <Compile Include="Areas\Administration\Models\AdmTopic\AdminTopicInputModel.cs" />
+    <Compile Include="Areas\Administration\Models\AdmTopic\AdminTopicViewModel.cs" />
+    <Compile Include="Areas\Administration\Models\AdmUni\AdminUniversityCreateModel.cs" />
+    <Compile Include="Areas\Administration\Models\AdmUni\AdminUniversityInputModel.cs" />
+    <Compile Include="Areas\Administration\Models\AdmArti\ArticleInputModel.cs" />
+    <Compile Include="Areas\Administration\Models\AdmArti\ArticleViewModel.cs" />
+    <Compile Include="Areas\Administration\Models\AdmUni\AdminUniversityViewModel.cs" />
     <Compile Include="Areas\Student\Controllers\LikesController.cs" />
     <Compile Include="Areas\Student\Controllers\WorksController.cs" />
     <Compile Include="Areas\Student\Models\AddWorkViewModel.cs" />
@@ -264,6 +268,7 @@
     <Compile Include="ViewModels\Articles\AllArticlesViewModel.cs" />
     <Compile Include="ViewModels\Articles\ArticleRelatedModel.cs" />
     <Compile Include="ViewModels\Articles\ArticleViewModel.cs" />
+    <Compile Include="ViewModels\Shared\PagingTopicViewModel.cs" />
     <Compile Include="ViewModels\Home\IndexArticleRelatedModel.cs" />
     <Compile Include="ViewModels\Home\IndexArticleViewModel.cs" />
     <Compile Include="ViewModels\Home\IndexViewModel.cs" />
@@ -318,7 +323,6 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Areas\Administration\Views\web.config" />
-    <Content Include="Areas\Administration\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Administration\Views\AdminArticles\Index.cshtml" />
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
@@ -331,6 +335,9 @@
     <Content Include="Areas\Student\Views\Works\Add.cshtml" />
     <Content Include="Areas\Student\Views\Shared\TinyMCEPartial.cshtml" />
     <Content Include="Areas\Administration\Views\AdminUniversities\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\AdminTopics\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\_KendoAlertsPartial.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />
@@ -564,11 +571,12 @@
     <Content Include="Views\TinyMCE\TinyMCEPartial.cshtml" />
     <Content Include="Views\Shared\_SearchPartial.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\AdminUniversityViewModel.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\AdminTopicViewModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Administration\Views\Shared\" />
     <Folder Include="Areas\Student\Views\Votes\" />
+    <Folder Include="Views\AdminTopics\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\Teachers\" />
   </ItemGroup>

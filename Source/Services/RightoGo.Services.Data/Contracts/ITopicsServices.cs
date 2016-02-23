@@ -9,5 +9,11 @@
         IQueryable<Topic> GetAll();
 
         IQueryable<Topic> GetById(int id);
+
+        void Add(Topic topic);
+
+        void Update(Topic topic);
+
+        void Delete(Topic topic);
     }
 }

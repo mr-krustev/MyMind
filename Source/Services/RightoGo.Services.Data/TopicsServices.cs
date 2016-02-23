@@ -1,6 +1,5 @@
 ﻿namespace RightoGo.Services.Data
 {
-    using System;
     using System.Linq;
 
     using Contracts;
@@ -16,6 +15,18 @@
             this.topics = topics;
         }
 
+        public void Add(Topic topic)
+        {
+            this.topics.Add(topic);
+            this.topics.Save();
+        }
+
+        public void Delete(Topic topic)
+        {
+            this.topics.Delete(topic);
+            this.topics.Save();
+        }
+
         public IQueryable<Topic> GetAll()
         {
             return this.topics.All();
@@ -24,6 +35,12 @@
         public IQueryable<Topic> GetById(int id)
         {
             return this.topics.All().Where(t => t.Id == id);
+        }
+
+        public void Update(Topic topic)
+        {
+            this.topics.Update(topic);
+            this.topics.Save();
         }
     }
 }

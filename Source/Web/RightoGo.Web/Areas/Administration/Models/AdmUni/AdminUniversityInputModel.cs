@@ -1,9 +1,12 @@
-﻿namespace RightoGo.Web.Areas.Administration.Models
+﻿namespace RightoGo.Web.Areas.Administration.Models.AdmUni
 {
     using System.ComponentModel.DataAnnotations;
 
-    public class AdminUniversityCreateModel
+    public class AdminUniversityInputModel
     {
+        [Required]
+        public int Id { get; set; }
+
         [Required]
         [MinLength(2)]
         [MaxLength(100)]

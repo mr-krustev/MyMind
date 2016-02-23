@@ -1,4 +1,4 @@
-﻿namespace RightoGo.Web.Areas.Administration.Models
+﻿namespace RightoGo.Web.Areas.Administration.Models.AdmArti
 {
     using System.ComponentModel.DataAnnotations;
 
