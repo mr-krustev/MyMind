@@ -210,8 +210,12 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\Administration\Controllers\AdminArticlesController.cs" />
+    <Compile Include="Areas\Administration\Controllers\AdminUniversitiesController.cs" />
+    <Compile Include="Areas\Administration\Models\AdminUniversityCreateModel.cs" />
+    <Compile Include="Areas\Administration\Models\AdminUniversityInputModel.cs" />
     <Compile Include="Areas\Administration\Models\ArticleInputModel.cs" />
     <Compile Include="Areas\Administration\Models\ArticleViewModel.cs" />
+    <Compile Include="Areas\Administration\Models\AdminUniversityViewModel.cs" />
     <Compile Include="Areas\Student\Controllers\LikesController.cs" />
     <Compile Include="Areas\Student\Controllers\WorksController.cs" />
     <Compile Include="Areas\Student\Models\AddWorkViewModel.cs" />
@@ -326,6 +330,7 @@
     <Content Include="Areas\Student\Views\Works\Details.cshtml" />
     <Content Include="Areas\Student\Views\Works\Add.cshtml" />
     <Content Include="Areas\Student\Views\Shared\TinyMCEPartial.cshtml" />
+    <Content Include="Areas\Administration\Views\AdminUniversities\Index.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />
@@ -558,6 +563,7 @@
     <Content Include="Scripts\tinymce\langs\readme.md" />
     <Content Include="Views\TinyMCE\TinyMCEPartial.cshtml" />
     <Content Include="Views\Shared\_SearchPartial.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\AdminUniversityViewModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

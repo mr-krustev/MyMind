@@ -10,9 +10,10 @@
     using Kendo.Mvc.UI;
     using Models;
     using Services.Data.Contracts;
+    using Web.Controllers;
 
     [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
-    public class AdminArticlesController : Controller
+    public class AdminArticlesController : BaseController
     {
         private IArticlesServices articles;
 

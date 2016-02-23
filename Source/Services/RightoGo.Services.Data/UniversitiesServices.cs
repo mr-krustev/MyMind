@@ -17,9 +17,32 @@
             this.universities = universities;
         }
 
+        public void Add(University university)
+        {
+            this.universities.Add(university);
+            this.universities.Save();
+        }
+
+        public void Delete(University university)
+        {
+            this.universities.Delete(university);
+            this.universities.Save();
+        }
+
         public IQueryable<University> GetAll()
         {
             return this.universities.All();
+        }
+
+        public IQueryable<University> GetById(int id)
+        {
+            return this.universities.All().Where(u => u.Id == id);
+        }
+
+        public void Update(University university)
+        {
+            this.universities.Update(university);
+            this.universities.Save();
         }
     }
 }
