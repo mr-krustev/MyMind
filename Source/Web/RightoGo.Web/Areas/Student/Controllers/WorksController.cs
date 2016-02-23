@@ -4,20 +4,24 @@
     using System.Web;
     using System.Web.Mvc;
 
+    using Ganss.XSS;
     using Infrastructure.Mapping;
     using Models;
     using Services.Data.Contracts;
     using ViewModels.Shared;
     using Web.Controllers;
-
+    using Data.Models;
+    using Microsoft.AspNet.Identity;
     [Authorize(Roles = "Student")]
     public class WorksController : BaseController
     {
         private IWorksServices works;
+        private ITopicsServices topics;
 
-        public WorksController(IWorksServices works)
+        public WorksController(IWorksServices works, ITopicsServices topics)
         {
             this.works = works;
+            this.topics = topics;
         }
 
         [HttpGet]
@@ -62,6 +66,49 @@
             }
 
             return this.View(viewModel);
+        }
+
+        [HttpGet]
+        public ActionResult Add()
+        {
+            var topics = this.topics.GetAll().To<TopicViewModel>().ToList();
+
+            var viewModel = new AddWorkViewModel()
+            {
+                Topics = topics
+            };
+
+            return this.View(viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Add(AddWorkInputModel model)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                var topics = this.topics.GetAll().To<TopicViewModel>().ToList();
+
+                var viewModel = new AddWorkViewModel()
+                {
+                    Title = model.Title,
+                    Content = model.Content,
+                    Topics = topics
+                };
+                return this.View(viewModel);
+            }
+
+            var topic = this.topics.GetById(model.TopicId).FirstOrDefault();
+            var newWork = new Work()
+            {
+                Title = model.Title,
+                Topic = topic,
+                Content = model.Content,
+                CreatedById = this.User.Identity.GetUserId()
+            };
+
+            var workCreated = this.works.Add(newWork).To<WorkViewModel>().FirstOrDefault();
+
+            return this.RedirectToAction("Details", new { id = workCreated.Id });
         }
     }
 }

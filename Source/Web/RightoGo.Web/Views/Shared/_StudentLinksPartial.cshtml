@@ -1,0 +1,11 @@
+﻿@if (this.User.Identity.IsAuthenticated && this.User.IsInRole("Student"))
+{
+    <li class="dropdown">
+        <a href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle">Works<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+            <li>@Html.ActionLink("All", "Index", "Works", new { area = "Student" }, null)</li>
+            <li role="separator" class="divider"></li>
+            <li>@Html.ActionLink("Add Work", "Add", "Works", new { area = "Student" }, null)</li>
+        </ul>
+    </li>
+}

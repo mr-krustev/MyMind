@@ -59,7 +59,7 @@
         </small>
         <br />
         <div class="more">
-            @work.Content
+            @Html.Raw(work.SanitizedContent)
         </div>
         <br />
         <small>@work.CreatedBy.UserName has writen this on @work.CreatedOnFormatted</small>

@@ -25,7 +25,9 @@
 
         public IQueryable<Work> Add(Work work)
         {
-            throw new NotImplementedException();
+            this.works.Add(work);
+            this.works.Save();
+            return this.works.All().Where(w => w.Title == work.Title && w.CreatedById == work.CreatedById && w.Topic.Id == work.Topic.Id);
         }
 
         public IQueryable<Work> GetAll()

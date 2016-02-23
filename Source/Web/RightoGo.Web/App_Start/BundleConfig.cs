@@ -22,6 +22,8 @@
                 "~/Scripts/KendoUI/kendo.aspnetmvc.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/notifications").Include("~/Scripts/toastr.min.js", "~/Scripts/sweetalert.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/tinyMCEBundle").Include("~/Scripts/tinymce/tinymce.min.js"));
         }
 
         private static void RegisterStyles(BundleCollection bundles)

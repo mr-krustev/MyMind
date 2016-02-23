@@ -1,0 +1,9 @@
+﻿@if (this.User.Identity.IsAuthenticated && !this.User.IsInRole("Student") && !this.User.IsInRole("Teacher") && !this.User.IsInRole("Administrator"))
+{
+    <li>@Html.ActionLink("Get Student Access", "GetAccess", "Students", new { area = string.Empty }, null)</li>
+}
+
+@if (this.User.Identity.IsAuthenticated && !this.User.IsInRole("Teacher") && !this.User.IsInRole("Administrator"))
+{
+    <li>@Html.ActionLink("Get Teacher Access", "GetAccess", "Teachers", new { area = string.Empty }, null)</li>
+}
