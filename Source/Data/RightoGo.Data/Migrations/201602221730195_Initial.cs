@@ -2,12 +2,12 @@ namespace RightoGo.Data.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
-    
+
     public partial class Initial : DbMigration
     {
         public override void Up()
         {
-            CreateTable(
+            this.CreateTable(
                 "dbo.Answers",
                 c => new
                     {
@@ -24,8 +24,8 @@ namespace RightoGo.Data.Migrations
                 .ForeignKey("dbo.Questions", t => t.QuestionId, cascadeDelete: true)
                 .Index(t => t.QuestionId)
                 .Index(t => t.IsDeleted);
-            
-            CreateTable(
+
+            this.CreateTable(
                 "dbo.Questions",
                 c => new
                     {
@@ -41,8 +41,8 @@ namespace RightoGo.Data.Migrations
                 .ForeignKey("dbo.Tests", t => t.Test_Id)
                 .Index(t => t.IsDeleted)
                 .Index(t => t.Test_Id);
-            
-            CreateTable(
+
+            this.CreateTable(
                 "dbo.Articles",
                 c => new
                     {
@@ -65,8 +65,8 @@ namespace RightoGo.Data.Migrations
                 .Index(t => t.IsDeleted)
                 .Index(t => t.Topic_Id)
                 .Index(t => t.Article_Id);
-            
-            CreateTable(
+
+            this.CreateTable(
                 "dbo.AspNetUsers",
                 c => new
                     {
@@ -97,8 +97,8 @@ namespace RightoGo.Data.Migrations
                 .Index(t => t.UniversityId)
                 .Index(t => t.UserName, unique: true, name: "UserNameIndex")
                 .Index(t => t.Test_Id);
-            
-            CreateTable(
+
+            this.CreateTable(
                 "dbo.AspNetUserClaims",
                 c => new
                     {
@@ -110,8 +110,8 @@ namespace RightoGo.Data.Migrations
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId);
-            
-            CreateTable(
+
+            this.CreateTable(
                 "dbo.Grades",
                 c => new
                     {
@@ -130,8 +130,8 @@ namespace RightoGo.Data.Migrations
                 .Index(t => t.RelatedTestId)
                 .Index(t => t.RelatedStudentId)
                 .Index(t => t.IsDeleted);
-            
-            CreateTable(
+
+            this.CreateTable(
                 "dbo.Tests",
                 c => new
                     {
@@ -155,8 +155,8 @@ namespace RightoGo.Data.Migrations
                 .Index(t => t.Topic_Id)
                 .Index(t => t.User_Id)
                 .Index(t => t.User_Id1);
-            
-            CreateTable(
+
+            this.CreateTable(
                 "dbo.Topics",
                 c => new
                     {
@@ -169,8 +169,8 @@ namespace RightoGo.Data.Migrations
                     })
                 .PrimaryKey(t => t.Id)
                 .Index(t => t.IsDeleted);
-            
-            CreateTable(
+
+            this.CreateTable(
                 "dbo.Works",
                 c => new
                     {
@@ -190,8 +190,8 @@ namespace RightoGo.Data.Migrations
                 .Index(t => t.CreatedById)
                 .Index(t => t.IsDeleted)
                 .Index(t => t.Topic_Id);
-            
-            CreateTable(
+
+            this.CreateTable(
                 "dbo.Likes",
                 c => new
                     {
@@ -210,8 +210,8 @@ namespace RightoGo.Data.Migrations
                 .Index(t => t.VoterId)
                 .Index(t => t.WorkId)
                 .Index(t => t.IsDeleted);
-            
-            CreateTable(
+
+            this.CreateTable(
                 "dbo.AspNetUserLogins",
                 c => new
                     {
@@ -222,8 +222,8 @@ namespace RightoGo.Data.Migrations
                 .PrimaryKey(t => new { t.LoginProvider, t.ProviderKey, t.UserId })
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId);
-            
-            CreateTable(
+
+            this.CreateTable(
                 "dbo.AspNetUserRoles",
                 c => new
                     {
@@ -235,8 +235,8 @@ namespace RightoGo.Data.Migrations
                 .ForeignKey("dbo.AspNetRoles", t => t.RoleId, cascadeDelete: true)
                 .Index(t => t.UserId)
                 .Index(t => t.RoleId);
-            
-            CreateTable(
+
+            this.CreateTable(
                 "dbo.Universities",
                 c => new
                     {
@@ -250,8 +250,8 @@ namespace RightoGo.Data.Migrations
                 .PrimaryKey(t => t.Id)
                 .Index(t => t.Name, unique: true)
                 .Index(t => t.IsDeleted);
-            
-            CreateTable(
+
+            this.CreateTable(
                 "dbo.Videos",
                 c => new
                     {
@@ -270,8 +270,8 @@ namespace RightoGo.Data.Migrations
                 .Index(t => t.IsDeleted)
                 .Index(t => t.User_Id)
                 .Index(t => t.Article_Id);
-            
-            CreateTable(
+
+            this.CreateTable(
                 "dbo.AspNetRoles",
                 c => new
                     {
@@ -280,85 +280,84 @@ namespace RightoGo.Data.Migrations
                     })
                 .PrimaryKey(t => t.Id)
                 .Index(t => t.Name, unique: true, name: "RoleNameIndex");
-            
         }
-        
+
         public override void Down()
         {
-            DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.Videos", "Article_Id", "dbo.Articles");
-            DropForeignKey("dbo.Articles", "Article_Id", "dbo.Articles");
-            DropForeignKey("dbo.Videos", "User_Id", "dbo.AspNetUsers");
-            DropForeignKey("dbo.AspNetUsers", "UniversityId", "dbo.Universities");
-            DropForeignKey("dbo.Tests", "User_Id1", "dbo.AspNetUsers");
-            DropForeignKey("dbo.Tests", "User_Id", "dbo.AspNetUsers");
-            DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.Grades", "RelatedTestId", "dbo.Tests");
-            DropForeignKey("dbo.Tests", "Topic_Id", "dbo.Topics");
-            DropForeignKey("dbo.Works", "Topic_Id", "dbo.Topics");
-            DropForeignKey("dbo.Likes", "WorkId", "dbo.Works");
-            DropForeignKey("dbo.Likes", "VoterId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.Works", "CreatedById", "dbo.AspNetUsers");
-            DropForeignKey("dbo.Articles", "Topic_Id", "dbo.Topics");
-            DropForeignKey("dbo.AspNetUsers", "Test_Id", "dbo.Tests");
-            DropForeignKey("dbo.Questions", "Test_Id", "dbo.Tests");
-            DropForeignKey("dbo.Tests", "CreatedById", "dbo.AspNetUsers");
-            DropForeignKey("dbo.Grades", "RelatedStudentId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.Articles", "CreatedById", "dbo.AspNetUsers");
-            DropForeignKey("dbo.Answers", "QuestionId", "dbo.Questions");
-            DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropIndex("dbo.Videos", new[] { "Article_Id" });
-            DropIndex("dbo.Videos", new[] { "User_Id" });
-            DropIndex("dbo.Videos", new[] { "IsDeleted" });
-            DropIndex("dbo.Universities", new[] { "IsDeleted" });
-            DropIndex("dbo.Universities", new[] { "Name" });
-            DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
-            DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
-            DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
-            DropIndex("dbo.Likes", new[] { "IsDeleted" });
-            DropIndex("dbo.Likes", new[] { "WorkId" });
-            DropIndex("dbo.Likes", new[] { "VoterId" });
-            DropIndex("dbo.Works", new[] { "Topic_Id" });
-            DropIndex("dbo.Works", new[] { "IsDeleted" });
-            DropIndex("dbo.Works", new[] { "CreatedById" });
-            DropIndex("dbo.Topics", new[] { "IsDeleted" });
-            DropIndex("dbo.Tests", new[] { "User_Id1" });
-            DropIndex("dbo.Tests", new[] { "User_Id" });
-            DropIndex("dbo.Tests", new[] { "Topic_Id" });
-            DropIndex("dbo.Tests", new[] { "IsDeleted" });
-            DropIndex("dbo.Tests", new[] { "CreatedById" });
-            DropIndex("dbo.Grades", new[] { "IsDeleted" });
-            DropIndex("dbo.Grades", new[] { "RelatedStudentId" });
-            DropIndex("dbo.Grades", new[] { "RelatedTestId" });
-            DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
-            DropIndex("dbo.AspNetUsers", new[] { "Test_Id" });
-            DropIndex("dbo.AspNetUsers", "UserNameIndex");
-            DropIndex("dbo.AspNetUsers", new[] { "UniversityId" });
-            DropIndex("dbo.Articles", new[] { "Article_Id" });
-            DropIndex("dbo.Articles", new[] { "Topic_Id" });
-            DropIndex("dbo.Articles", new[] { "IsDeleted" });
-            DropIndex("dbo.Articles", new[] { "CreatedById" });
-            DropIndex("dbo.Questions", new[] { "Test_Id" });
-            DropIndex("dbo.Questions", new[] { "IsDeleted" });
-            DropIndex("dbo.Answers", new[] { "IsDeleted" });
-            DropIndex("dbo.Answers", new[] { "QuestionId" });
-            DropTable("dbo.AspNetRoles");
-            DropTable("dbo.Videos");
-            DropTable("dbo.Universities");
-            DropTable("dbo.AspNetUserRoles");
-            DropTable("dbo.AspNetUserLogins");
-            DropTable("dbo.Likes");
-            DropTable("dbo.Works");
-            DropTable("dbo.Topics");
-            DropTable("dbo.Tests");
-            DropTable("dbo.Grades");
-            DropTable("dbo.AspNetUserClaims");
-            DropTable("dbo.AspNetUsers");
-            DropTable("dbo.Articles");
-            DropTable("dbo.Questions");
-            DropTable("dbo.Answers");
+            this.DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            this.DropForeignKey("dbo.Videos", "Article_Id", "dbo.Articles");
+            this.DropForeignKey("dbo.Articles", "Article_Id", "dbo.Articles");
+            this.DropForeignKey("dbo.Videos", "User_Id", "dbo.AspNetUsers");
+            this.DropForeignKey("dbo.AspNetUsers", "UniversityId", "dbo.Universities");
+            this.DropForeignKey("dbo.Tests", "User_Id1", "dbo.AspNetUsers");
+            this.DropForeignKey("dbo.Tests", "User_Id", "dbo.AspNetUsers");
+            this.DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
+            this.DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
+            this.DropForeignKey("dbo.Grades", "RelatedTestId", "dbo.Tests");
+            this.DropForeignKey("dbo.Tests", "Topic_Id", "dbo.Topics");
+            this.DropForeignKey("dbo.Works", "Topic_Id", "dbo.Topics");
+            this.DropForeignKey("dbo.Likes", "WorkId", "dbo.Works");
+            this.DropForeignKey("dbo.Likes", "VoterId", "dbo.AspNetUsers");
+            this.DropForeignKey("dbo.Works", "CreatedById", "dbo.AspNetUsers");
+            this.DropForeignKey("dbo.Articles", "Topic_Id", "dbo.Topics");
+            this.DropForeignKey("dbo.AspNetUsers", "Test_Id", "dbo.Tests");
+            this.DropForeignKey("dbo.Questions", "Test_Id", "dbo.Tests");
+            this.DropForeignKey("dbo.Tests", "CreatedById", "dbo.AspNetUsers");
+            this.DropForeignKey("dbo.Grades", "RelatedStudentId", "dbo.AspNetUsers");
+            this.DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
+            this.DropForeignKey("dbo.Articles", "CreatedById", "dbo.AspNetUsers");
+            this.DropForeignKey("dbo.Answers", "QuestionId", "dbo.Questions");
+            this.DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            this.DropIndex("dbo.Videos", new[] { "Article_Id" });
+            this.DropIndex("dbo.Videos", new[] { "User_Id" });
+            this.DropIndex("dbo.Videos", new[] { "IsDeleted" });
+            this.DropIndex("dbo.Universities", new[] { "IsDeleted" });
+            this.DropIndex("dbo.Universities", new[] { "Name" });
+            this.DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
+            this.DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
+            this.DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
+            this.DropIndex("dbo.Likes", new[] { "IsDeleted" });
+            this.DropIndex("dbo.Likes", new[] { "WorkId" });
+            this.DropIndex("dbo.Likes", new[] { "VoterId" });
+            this.DropIndex("dbo.Works", new[] { "Topic_Id" });
+            this.DropIndex("dbo.Works", new[] { "IsDeleted" });
+            this.DropIndex("dbo.Works", new[] { "CreatedById" });
+            this.DropIndex("dbo.Topics", new[] { "IsDeleted" });
+            this.DropIndex("dbo.Tests", new[] { "User_Id1" });
+            this.DropIndex("dbo.Tests", new[] { "User_Id" });
+            this.DropIndex("dbo.Tests", new[] { "Topic_Id" });
+            this.DropIndex("dbo.Tests", new[] { "IsDeleted" });
+            this.DropIndex("dbo.Tests", new[] { "CreatedById" });
+            this.DropIndex("dbo.Grades", new[] { "IsDeleted" });
+            this.DropIndex("dbo.Grades", new[] { "RelatedStudentId" });
+            this.DropIndex("dbo.Grades", new[] { "RelatedTestId" });
+            this.DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
+            this.DropIndex("dbo.AspNetUsers", new[] { "Test_Id" });
+            this.DropIndex("dbo.AspNetUsers", "UserNameIndex");
+            this.DropIndex("dbo.AspNetUsers", new[] { "UniversityId" });
+            this.DropIndex("dbo.Articles", new[] { "Article_Id" });
+            this.DropIndex("dbo.Articles", new[] { "Topic_Id" });
+            this.DropIndex("dbo.Articles", new[] { "IsDeleted" });
+            this.DropIndex("dbo.Articles", new[] { "CreatedById" });
+            this.DropIndex("dbo.Questions", new[] { "Test_Id" });
+            this.DropIndex("dbo.Questions", new[] { "IsDeleted" });
+            this.DropIndex("dbo.Answers", new[] { "IsDeleted" });
+            this.DropIndex("dbo.Answers", new[] { "QuestionId" });
+            this.DropTable("dbo.AspNetRoles");
+            this.DropTable("dbo.Videos");
+            this.DropTable("dbo.Universities");
+            this.DropTable("dbo.AspNetUserRoles");
+            this.DropTable("dbo.AspNetUserLogins");
+            this.DropTable("dbo.Likes");
+            this.DropTable("dbo.Works");
+            this.DropTable("dbo.Topics");
+            this.DropTable("dbo.Tests");
+            this.DropTable("dbo.Grades");
+            this.DropTable("dbo.AspNetUserClaims");
+            this.DropTable("dbo.AspNetUsers");
+            this.DropTable("dbo.Articles");
+            this.DropTable("dbo.Questions");
+            this.DropTable("dbo.Answers");
         }
     }
 }

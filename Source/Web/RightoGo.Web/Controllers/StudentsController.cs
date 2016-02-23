@@ -10,7 +10,7 @@
     using Microsoft.AspNet.Identity;
     using Services.Data.Contracts;
     using ViewModels.Students;
-    using ViewModels.Account;
+
     [Authorize]
     public class StudentsController : BaseController
     {

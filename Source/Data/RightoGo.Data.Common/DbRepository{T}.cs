@@ -9,7 +9,6 @@
 
     public class DbRepository<T> : IDbRepository<T>
         where T : BaseModel<int>
-        // Maybe change int to object so we can search for users too?
     {
         public DbRepository(DbContext context)
         {

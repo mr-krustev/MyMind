@@ -60,7 +60,7 @@
         </small>
         <br />
         <div class="more">
-            @article.Content
+            @Html.Raw(article.SanitizedContent);
         </div>
         <br />
         @if (article.RelatedArticles.Count() > 0)

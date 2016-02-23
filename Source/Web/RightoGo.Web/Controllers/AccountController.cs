@@ -5,14 +5,14 @@
     using System.Web;
     using System.Web.Mvc;
 
+    using Data.Models;
+    using Infrastructure.Mapping;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
-
-    using RightoGo.Data.Models;
-    using RightoGo.Web.ViewModels.Account;
     using Services.Data.Contracts;
-    using Infrastructure.Mapping;
+    using ViewModels.Account;
+
     [Authorize]
     public class AccountController : BaseController
     {
@@ -86,7 +86,6 @@
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-
             var result =
                 await
                 this.SignInManager.PasswordSignInAsync(
@@ -188,6 +187,7 @@
                 {
                     avatar = "http://www.avatarys.com/var/albums/Cool-Avatars/Mix-Avatars/Cool-avatars-anonymous-avatar.jpg?m=1439941438";
                 }
+
                 var universityId = model.UniversityId;
                 if (universityId == null || universityId == string.Empty)
                 {
@@ -222,6 +222,7 @@
 
             var universities = this.universities.GetAll().To<UniversityViewModel>().ToList();
             model.Universities = universities;
+
             // If we got this far, something failed, redisplay form
             return this.View(model);
         }

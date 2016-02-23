@@ -22,7 +22,6 @@
             this.sortValues.Add("name", "Title");
         }
 
-
         public IQueryable<Work> Add(Work work)
         {
             this.works.Add(work);
@@ -72,7 +71,7 @@
         {
             var result = this.works.All();
 
-            if (filterByTopic != string.Empty && filterByTopic != null && filterByTopic != "")
+            if (filterByTopic != string.Empty && filterByTopic != null)
             {
                 result = result.Where(a => a.Topic.Value == filterByTopic);
             }

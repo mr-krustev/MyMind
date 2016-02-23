@@ -1,5 +1,4 @@
-﻿
-namespace RightoGo.Data.Common.UserRepoModel
+﻿namespace RightoGo.Data.Common.UserRepoModel
 {
     using System;
     using System.Data.Entity;

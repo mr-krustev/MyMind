@@ -75,7 +75,7 @@
 
             var result = this.likes.GetAll().Where(x => x.WorkId == workId).ToList().Sum(x => (int)x.Type);
 
-            return Json(new { Count = result });
+            return this.Json(new { Count = result });
         }
     }
 }

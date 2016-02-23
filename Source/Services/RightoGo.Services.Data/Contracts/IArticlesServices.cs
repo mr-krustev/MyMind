@@ -19,8 +19,7 @@
         IQueryable<Article> GetFiltered(string filterByTopic);
 
         IQueryable<Article> GetFilteredAndSearched(string filterByTopic, string searchInput);
-        
-        IQueryable<Article> GetById(int id);
 
+        IQueryable<Article> GetById(int id);
     }
 }

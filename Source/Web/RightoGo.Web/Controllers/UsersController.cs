@@ -16,8 +16,8 @@
     [Authorize]
     public class UsersController : BaseController
     {
-        private IUsersServices users;
         private readonly UserManager<User> manager;
+        private IUsersServices users;
 
         public UsersController(IUsersServices users, UserManager<User> manager)
         {

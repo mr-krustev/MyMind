@@ -13,7 +13,7 @@
     </small>
     <br />
     <div class="more">
-        @Model.Content
+        @Html.Raw(Model.SanitizedContent);
     </div>
     <br />
     @if (@Model.RelatedArticles.Count() > 0)

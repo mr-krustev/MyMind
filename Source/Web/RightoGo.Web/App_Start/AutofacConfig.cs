@@ -15,7 +15,7 @@
     using Microsoft.AspNet.Identity.EntityFramework;
     using Services.Data.Contracts;
     using Services.Web;
-    using Ganss.XSS;
+
     public static class AutofacConfig
     {
         public static void RegisterAutofac()
@@ -41,7 +41,7 @@
             builder.RegisterType<UserStore<User>>()
                 .As<IUserStore<User>>();
             builder.RegisterType<UserManager<User>>();
-            
+
             // Register services
             RegisterServices(builder);
 
@@ -62,7 +62,7 @@
             builder.Register(x => new IdentifierProvider())
                 .As<IIdentifierProvider>()
                 .InstancePerRequest();
-            
+
             var serviceAssembly = Assembly.GetAssembly(typeof(IArticlesServices));
             builder.RegisterAssemblyTypes(serviceAssembly).AsImplementedInterfaces();
 

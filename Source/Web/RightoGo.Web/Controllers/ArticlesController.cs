@@ -1,6 +1,7 @@
 ﻿namespace RightoGo.Web.Controllers
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Web;
     using System.Web.Mvc;
@@ -9,7 +10,7 @@
     using Services.Data.Contracts;
     using ViewModels.Articles;
     using ViewModels.Shared;
-    using System.Collections.Generic;
+
     public class ArticlesController : BaseController
     {
         private IArticlesServices articles;

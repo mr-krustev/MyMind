@@ -24,6 +24,5 @@
         public string SortBy { get; set; }
 
         public string SearchInput { get; set; }
-
     }
 }

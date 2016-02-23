@@ -1,14 +1,14 @@
 ﻿namespace RightoGo.Web.Controllers
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
-    using System.Web.Caching;
     using System.Web.Mvc;
 
     using Infrastructure.Mapping;
     using Services.Data.Contracts;
     using ViewModels.Home;
-    using System.Collections.Generic;
+
     public class HomeController : BaseController
     {
         private IArticlesServices articles;
@@ -18,7 +18,6 @@
             this.articles = articles;
         }
 
-        //[OutputCache(Duration = 10 * 60 * 60)]
         public ActionResult Index()
         {
             IEnumerable<IndexArticleViewModel> articleData;

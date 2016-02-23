@@ -43,7 +43,7 @@
         {
             var result = this.articles.All();
 
-            if (filterByTopic != string.Empty && filterByTopic != null && filterByTopic != "")
+            if (filterByTopic != string.Empty && filterByTopic != null)
             {
                 result = result.Where(a => a.Topic.Value == filterByTopic);
             }
@@ -67,7 +67,7 @@
         {
             var result = this.articles.All();
 
-            if (filterByTopic != string.Empty && filterByTopic != null && filterByTopic != "")
+            if (filterByTopic != string.Empty && filterByTopic != null)
             {
                 result = result.Where(a => a.Topic.Value == filterByTopic);
             }

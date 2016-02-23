@@ -4,10 +4,18 @@
     using System.Collections.Generic;
 
     using Data.Models;
+    using Ganss.XSS;
     using Infrastructure.Mapping;
 
     public class ArticleViewModel : IMapFrom<Article>
     {
+        private IHtmlSanitizer sanitizer;
+
+        public ArticleViewModel()
+        {
+            this.sanitizer = new HtmlSanitizer();
+        }
+
         public int Id { get; set; }
 
         public string Title { get; set; }
@@ -15,6 +23,14 @@
         public Topic Topic { get; set; }
 
         public string Content { get; set; }
+
+        public string SanitizedContent
+        {
+            get
+            {
+                return this.sanitizer.Sanitize(this.Content);
+            }
+        }
 
         public bool IsPrivate { get; set; }
 
