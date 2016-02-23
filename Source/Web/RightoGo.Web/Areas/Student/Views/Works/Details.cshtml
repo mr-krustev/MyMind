@@ -45,11 +45,11 @@
         </div>
         <div class="col-md-10">
             <h3>
-                @Html.ActionLink((string)Model.Title, "Details", "Works", new { area = "Students", id = @Model.Id }, null)
+                @Html.ActionLink((string)Model.Title, "Details", "Works", new { area = "Student", id = Model.Id }, null)
             </h3>
             <br />
             <small>
-                @Html.ActionLink((string)Model.TopicName, "Index", "Works", new { area = "Students", filterByTopic = @Model.TopicName }, null)
+                @Html.ActionLink((string)Model.TopicName, "Index", "Works", new { area = "Student", filterByTopic = Model.TopicName }, null)
             </small>
             <br />
             <div class="more">

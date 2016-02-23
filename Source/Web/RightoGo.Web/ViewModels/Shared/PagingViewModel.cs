@@ -11,6 +11,8 @@
 
         public int TotalPages { get; set; }
 
+        public string ControllerName { get; set; }
+
         public string ActionName { get; set; }
 
         public string AreaName { get; set; }
@@ -21,7 +23,11 @@
 
         public string OrderBy { get; set; }
 
+        public IEnumerable<OrderByViewModel> OrderByList { get; set; }
+
         public string SortBy { get; set; }
+
+        public IEnumerable<SortByViewModel> SortByList { get; set; }
 
         public string SearchInput { get; set; }
     }

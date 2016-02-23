@@ -15,6 +15,16 @@
     {
         private IArticlesServices articles;
 
+        private List<OrderByViewModel> orderByList = new List<OrderByViewModel>() {
+                new OrderByViewModel() { Value = "asc", Text = "Ascending" },
+                new OrderByViewModel() { Value = "desc", Text = "Descending" }
+            };
+
+        private List<SortByViewModel> sortByList = new List<SortByViewModel>() {
+                new SortByViewModel() { Value = "name", Text = "Title" },
+                new SortByViewModel() { Value = "date", Text = "Dates" }
+            };
+
         public ArticlesController(IArticlesServices articles)
         {
             this.articles = articles;
@@ -59,12 +69,15 @@
                     Page = page,
                     PageSize = pageSize,
                     OrderBy = orderBy,
+                    OrderByList = this.orderByList,
+                    SortByList = this.sortByList,
                     FilterBy = filterByTopic,
                     SortBy = sortBy,
                     TotalPages = totalPages,
                     SearchInput = searchInput,
                     AreaName = string.Empty,
-                    ActionName = "All"
+                    ActionName = "All",
+                    ControllerName = "Articles"
                 }
             };
 

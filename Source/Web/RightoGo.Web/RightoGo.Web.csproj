@@ -273,7 +273,9 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\Manage\SetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
+    <Compile Include="ViewModels\Shared\OrderByViewModel.cs" />
     <Compile Include="ViewModels\Shared\PagingViewModel.cs" />
+    <Compile Include="ViewModels\Shared\SortByViewModel.cs" />
     <Compile Include="ViewModels\Shared\Student\WorksViewModel.cs" />
     <Compile Include="ViewModels\Students\StudentInputModel.cs" />
     <Compile Include="ViewModels\Users\Teacher\ProfileArticleViewModel.cs" />
@@ -555,6 +557,7 @@
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\readme.md" />
     <Content Include="Scripts\tinymce\langs\readme.md" />
     <Content Include="Views\TinyMCE\TinyMCEPartial.cshtml" />
+    <Content Include="Views\Shared\_SearchPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

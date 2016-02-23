@@ -1,0 +1,34 @@
+﻿@model RightoGo.Web.ViewModels.Shared.PagingViewModel
+
+<div>
+    @{
+        var orderByList = Model.OrderByList.Select(o => new SelectListItem() { Value = o.Value, Text = o.Text });
+        var sortByList = Model.SortByList.Select(o => new SelectListItem() { Value = o.Value, Text = o.Text });
+    }
+
+    @using (Html.BeginForm(Model.ActionName, Model.ControllerName, new { sortBy = Model.SortBy, orderBy = Model.OrderBy, searchInput = Model.SearchInput, area = Model.AreaName }, FormMethod.Get, new { @class = "form-inline", role = "form" }))
+    {
+        <!--Add sortBy, etc-->
+        <div class="form-group col-md-2">
+            @Html.LabelFor(m => Model.SortBy, "Sort By:", new { @class = "col-md-12 control-label" })
+            <div class="col-md-4">
+                @Html.DropDownList("SortBy", sortByList, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group col-md-2">
+            @Html.LabelFor(m => Model.OrderBy, "Order By:", new { @class = "col-md-12 control-label" })
+            <div class="col-md-8">
+                @Html.DropDownList("OrderBy", orderByList, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group cold-md-8 pull-right">
+            @Html.LabelFor(m => Model.SearchInput, "Search:", new { @class = "col-md-12 control-label" })
+            <div class="col-md-8">
+                @Html.TextBoxFor(m => m.SearchInput, null, new { @class = "form-control", Name = "searchInput" })
+            </div>
+            <input class="btn btn-default" type="submit" value="Search" />
+        </div>
+    }
+    <br />
+</div>
