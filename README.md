@@ -12,7 +12,7 @@ All users have:
  * Avatar
  * FirstName - between 2 and 20 symbols
  * LastName - between 2 and 20 symbols
- * University - between 2 and 20 symbols
+ * University(req)
  * Likes
 
 Normal users can review articles, search through all articles, basically they have "read permissions". Can also like works.
@@ -27,8 +27,8 @@ Students have:
 Students can do everything a normal user can do, but they can also take part in Tests to which they are authorised. *They can also add personal works.*
 
 Teachers have:
- * Videos
- * TestsCreated
+ * Videos - not implemented yet
+ * TestsCreated - not implemented yet
  * FieldOfStudy - between 2 and 20 symbols
  * *Articles*
 
@@ -43,8 +43,6 @@ Students can add **works** on their profile. Works have:
  * Content(req) - MinLength(2)
  * CreatedOn(req)
  * CreatedBy(req)
- * IsPrivate(req) - default false
- * AuthorizedUsers - default only Publisher
 
  * Likes
 
@@ -55,15 +53,13 @@ Teachers can add **articles**, which are publicly visible. Articles have:
  * Content(req) - MinLength(2)
  * CreatedOn(req)
  * CreatedBy(req)
- * IsPrivate(req) - default false
- * AuthorizedUsers - default only Publisher
-
- * RelatedVideos
+ 
+ * RelatedVideos  - not implemented yet
  * RelatedArticles
  
 ------
 Teachers can create **Tests** and **add Students** to participate. Tests have:
-
+**Not implemented yet**
  * Topic(req)
  * CreatedBy(req)
  * CreatedOn(req)
@@ -71,7 +67,7 @@ Teachers can create **Tests** and **add Students** to participate. Tests have:
  * RelatedQuestions
 
 Students can take tests and receive **grades**. Grades have:
-
+**Not implemented yet**
  * Value(req) - between 0 and 100. (percentage based on correct answers/questions)
  * RelatedTest(req)
  * RelatedStudent(req)
@@ -83,12 +79,13 @@ Students can take tests and receive **grades**. Grades have:
 
 Administrators can:
 
- * Edit/Remove Users
  * Add/Edit/Remove Topics
  * Add/Edit/Remove Articles
+ * Add/Edit/Remove Universities
  * Add/Edit/Remove Works
- * Add/Edit/Remove Videos
  * Add/Edit/Remove Tests
+ * Add/Edit/Remove Videos - not implemented yet
+ * Edit/Remove Users - not implemented yet
 
 ## Data
 
@@ -108,21 +105,19 @@ Administrators can:
 * LastName
 * University
 
-
-#### Teacher extends User
+* Teacher related
   * FieldOfStudy ??
   * Videos
   * TestsCreated
   * Articles
-
-#### Student extends User
+* Student related
   * TestsTaken
   * Grades
   * Faculty
   * Specialty
   * Works
 
-#### TeacherAccessTokens
+#### TeacherAccessTokens - not implemented
  * Value
  * IsTaken
 
@@ -131,29 +126,31 @@ Administrators can:
 * Name
 * RelatedArticles
 
-#### Publication
+#### Article
  * Title
  * Topic
  * Content
  * CreatedOn
  * CreatedBy
- * IsPrivate
- * AuthorizedUsers
+ 
+ * RelatedVideos - not implemented yet
+ * RelatedArticles
 
-#### Article extends Publication
-
-* RelatedVideos
-* RelatedArticles
-
-#### Works extends Publication
+#### Works
+* Title
+ * Topic
+ * Content
+ * CreatedOn
+ * CreatedBy
+ 
  * Likes
 
 #### Like
- * Value (-1 or 1) 
+ * Value (-1, 0 or 1) -  Enumeration
  * User
  * RelatedWork
 
-#### Video
+#### Video - not implemented yet
 
 * YoutubeURL
 * Title
@@ -161,7 +158,7 @@ Administrators can:
 * CreatedOn
 * RelatedArticles
 
-#### Test
+#### Test - not implemented yet (only Admin)
 
 * Name
 * CreatedBy
@@ -169,29 +166,19 @@ Administrators can:
 * StudentsAllowed
 * RelatedQuestions
 
-#### Question
+#### Question - not implemented yet
 * Task
 * Answers
 * Explanation
 
-#### Answer
+#### Answer - not implemented yet
  * Value
  * IsCorrect
 
-#### Grade
+#### Grade - not implemented yet
 
  * Value
  * RelatedTest
  * RelatedStudent
  * RelatedExaminer
-
-### Services
-
-## Web
-
-### Routes
-
-### Controllers
-
-...
 
