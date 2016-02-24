@@ -14,28 +14,29 @@
 {
     <div class="jumbotron">
         <h3>
-            @Html.ActionLink((string)article.Title, "Details", "Articles", new { area = string.Empty, id = article.Id }, null)
+           <b>Title: </b> @Html.ActionLink((string)article.Title, "Details", "Articles", new { area = string.Empty, id = article.Id }, null)
         </h3>
-        <br />
         <small>
-            @Html.ActionLink((string)article.Topic.Value, "All", "Articles", new { area = string.Empty, filterByTopic = article.Topic.Value }, null)
+           <b>Topic: </b>  @Html.ActionLink((string)article.Topic.Value, "All", "Articles", new { area = string.Empty, filterByTopic = article.Topic.Value }, null)
         </small>
         <br />
+        <br />
         <div class="more">
+            <div><b>Content: </b></div>
             @Html.Raw(article.SanitizedContent);
         </div>
         <br />
         @if (article.RelatedArticles.Count() > 0)
         {
             <div>
-                Related to: @foreach (var relatedArticle in article.RelatedArticles)
+                <b>Related to: </b> @foreach (var relatedArticle in article.RelatedArticles)
                     {
                     <span>@Html.ActionLink((string)relatedArticle.Title, "Details", "Articles", new { area = string.Empty, id = relatedArticle.Id }, null)</span>
                 }
             </div>
             <br />
         }
-        <small>@article.CreatedBy.UserName has writen this on @article.CreatedOnFormated</small>
+        <small>@Html.ActionLink((string)article.CreatedBy.UserName, "ById", new { id = article.CreatedBy.Id, controller = "Users" }) has writen this on @article.CreatedOnFormated</small>
     </div>
 }
 
