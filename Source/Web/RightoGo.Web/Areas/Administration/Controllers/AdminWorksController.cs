@@ -12,7 +12,7 @@
     using Services.Data.Contracts;
     using Web.Controllers;
 
-    public class AdminWorksController : Controller
+    public class AdminWorksController : BaseController
     {
         private IWorksServices works;
 

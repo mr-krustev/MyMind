@@ -9,7 +9,7 @@
     {
         public Test()
         {
-            this.StudentsAllowed = new HashSet<User>();
+            this.Questions = new HashSet<Question>();
         }
 
         [Required]
@@ -18,8 +18,6 @@
         public string CreatedById { get; set; }
 
         public virtual User CreatedBy { get; set; }
-
-        public virtual ICollection<User> StudentsAllowed { get; set; }
 
         public virtual ICollection<Question> Questions { get; set; }
     }

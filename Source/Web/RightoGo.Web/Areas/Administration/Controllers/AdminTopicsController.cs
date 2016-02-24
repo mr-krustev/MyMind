@@ -29,8 +29,6 @@
         public ActionResult Topics_Read([DataSourceRequest]DataSourceRequest request)
         {
             var result = this.topics.GetAll().To<AdminTopicViewModel>();
-
-            // return this.Json(result);
             return this.Json(result.ToDataSourceResult(request, this.ModelState));
         }
 

@@ -210,9 +210,14 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\Administration\Controllers\AdminArticlesController.cs" />
+    <Compile Include="Areas\Administration\Controllers\AdminTestsController.cs" />
     <Compile Include="Areas\Administration\Controllers\AdminTopicsController.cs" />
     <Compile Include="Areas\Administration\Controllers\AdminUniversitiesController.cs" />
     <Compile Include="Areas\Administration\Controllers\AdminWorksController.cs" />
+    <Compile Include="Areas\Administration\Models\AdmTest\AdminTestCreateModel.cs" />
+    <Compile Include="Areas\Administration\Models\AdmTest\AdminTestInputModel.cs" />
+    <Compile Include="Areas\Administration\Models\AdmTest\AdminTestViewModel.cs" />
+    <Compile Include="Areas\Administration\Models\AdmTest\AdminTopicViewModel.cs" />
     <Compile Include="Areas\Administration\Models\AdmTopic\AdminTopicCreateModel.cs" />
     <Compile Include="Areas\Administration\Models\AdmTopic\AdminTopicInputModel.cs" />
     <Compile Include="Areas\Administration\Models\AdmTopic\AdminTopicViewModel.cs" />
@@ -254,6 +259,7 @@
     <Compile Include="App_Start\GlimpseSecurityPolicy.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Controllers\TeachersController.cs" />
+    <Compile Include="Controllers\TopicsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -293,6 +299,7 @@
     <Compile Include="ViewModels\Users\Teacher\ProfileArticleViewModel.cs" />
     <Compile Include="ViewModels\Users\Teacher\ProfileRelatedArticleViewModel.cs" />
     <Compile Include="ViewModels\Users\UserViewModel.cs" />
+    <Compile Include="Views\Topics\TopicsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -342,6 +349,7 @@
     <Content Include="Areas\Administration\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\_KendoAlertsPartial.cshtml" />
     <Content Include="Areas\Administration\Views\AdminWorks\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\AdminTests\Index.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />
@@ -577,10 +585,13 @@
     <Content Include="Views\Shared\EditorTemplates\AdminUniversityViewModel.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\AdminTopicViewModel.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\AdminWorkViewModel.cshtml" />
+    <Content Include="Views\Shared\DetailTemplates\AdminTestViewModel.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\AdminTestViewModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Student\Views\Votes\" />
+    <Folder Include="Views\AdminTests\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\Teachers\" />
   </ItemGroup>
