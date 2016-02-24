@@ -47,6 +47,7 @@
                 && searchInput == string.Empty)
                 {
                     articleData = (IEnumerable<ArticleViewModel>)this.HttpContext.Cache["All_Articles_" + page + "_" + pageSize + "_" + orderBy + "_" + sortBy];
+
                 }
                 else if (filterByTopic != string.Empty || searchInput != string.Empty)
                 {
@@ -71,6 +72,8 @@
                                     .To<ArticleViewModel>().ToList();
             }
 
+            var topicsData = this.topics.GetAll().To<PagingTopicViewModel>().ToList();
+            topicsData.Insert(0, new PagingTopicViewModel() { Value = string.Empty, Text = "None" });
             var viewModel = new AllArticlesViewModel()
             {
                 Articles = articleData,
