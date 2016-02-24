@@ -5,6 +5,7 @@
 
     using Common;
     using Data.Models;
+    using Helpers;
     using Infrastructure.Mapping;
     using Kendo.Mvc.Extensions;
     using Kendo.Mvc.UI;
@@ -12,6 +13,7 @@
     using Services.Data.Contracts;
     using Web.Controllers;
 
+    [AuthorizeRedirect(Roles = GlobalConstants.AdministratorRoleName)]
     public class AdminWorksController : BaseController
     {
         private IWorksServices works;

@@ -7,11 +7,12 @@
     using System.Web.Mvc;
 
     using Data.Models;
+    using Helpers;
     using Microsoft.AspNet.Identity;
     using Services.Data.Contracts;
     using Web.Controllers;
-
-    [Authorize(Roles = "Student, Administrator")]
+    
+    [AuthorizeRedirect(Roles = "Administrator, Student")]
     public class LikesController : BaseController
     {
         private ILikesServices likes;

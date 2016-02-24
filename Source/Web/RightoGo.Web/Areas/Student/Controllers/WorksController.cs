@@ -7,13 +7,14 @@
 
     using Data.Models;
     using Infrastructure.Mapping;
+    using Helpers;
     using Microsoft.AspNet.Identity;
     using Models;
     using Services.Data.Contracts;
     using ViewModels.Shared;
     using Web.Controllers;
 
-    [Authorize(Roles = "Student, Administrator")]
+    [AuthorizeRedirect(Roles = "Administrator, Student")]
     public class WorksController : BaseController
     {
         private IWorksServices works;
