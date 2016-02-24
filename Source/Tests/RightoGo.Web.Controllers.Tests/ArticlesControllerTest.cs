@@ -26,8 +26,7 @@
             autoMapperConfig.Execute(typeof(ArticlesController).Assembly);
 
             var jokesServiceMock = new Mock<IArticlesServices>();
-            jokesServiceMock.Setup(x => x.GetAllPagedFilteredSorted(It.IsAny<int>(), It.IsAny<int>(),It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
-                .Returns(this.articleData.AsQueryable());
+            jokesServiceMock.Setup(x => x.GetAllPagedFilteredSorted(It.IsAny<int>(), It.IsAny<int>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>())).Returns(this.articleData.AsQueryable());
 
             var topicsServiceMock = new Mock<ITopicsServices>();
             topicsServiceMock.Setup(x => x.GetAll())

@@ -47,7 +47,6 @@
                 && searchInput == string.Empty)
                 {
                     articleData = (IEnumerable<ArticleViewModel>)this.HttpContext.Cache["All_Articles_" + page + "_" + pageSize + "_" + orderBy + "_" + sortBy];
-
                 }
                 else if (filterByTopic != string.Empty || searchInput != string.Empty)
                 {

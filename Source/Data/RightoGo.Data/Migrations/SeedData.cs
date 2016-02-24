@@ -131,14 +131,14 @@
 
         private List<Article> GenerateArticles(ApplicationDbContext context)
         {
-            const int numberOfArticles = 10;
+            const int NumberOfArticles = 10;
 
             var teacher = context.Users.ToList().FirstOrDefault(u => this.userManager.IsInRole(u.Id, TeacherRoleName));
             var generatedArticles = new List<Article>();
 
             if (teacher != null)
             {
-                for (int i = 0; i < numberOfArticles; i++)
+                for (int i = 0; i < NumberOfArticles; i++)
                 {
                     var article = new Article()
                     {
@@ -192,18 +192,18 @@
 
         private List<User> GenerateUsers()
         {
-            const int numberOfUsers = 10;
-            const string defaultAvatar = "http://www.avatarys.com/var/albums/Cool-Avatars/Mix-Avatars/Cool-avatars-anonymous-avatar.jpg?m=1439941438";
+            const int NumberOfUsers = 10;
+            const string DefaultAvatar = "http://www.avatarys.com/var/albums/Cool-Avatars/Mix-Avatars/Cool-avatars-anonymous-avatar.jpg?m=1439941438";
 
             var generatedUsers = new List<User>();
-            for (int i = 0; i < numberOfUsers; i++)
+            for (int i = 0; i < NumberOfUsers; i++)
             {
                 var user = new User
                 {
                     UserName = "user" + i,
                     Email = "user" + i + "@cool.com",
                     PasswordHash = this.userManager.PasswordHasher.HashPassword("user" + i + "pass"),
-                    AvatarUrl = defaultAvatar,
+                    AvatarUrl = DefaultAvatar,
                     FirstName = "Toshko",
                     LastName = "Goshkov",
                     SecurityStamp = Guid.NewGuid().ToString()

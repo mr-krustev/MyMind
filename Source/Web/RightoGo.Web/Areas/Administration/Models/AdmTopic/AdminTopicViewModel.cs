@@ -19,7 +19,7 @@
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? ModifiedOn { get; set; }
-        // public virtual ICollection<Article> RelatedArticles { get; set; }
-        // public virtual ICollection<Work> RelatedWorks { get; set; }
+        //// public virtual ICollection<Article> RelatedArticles { get; set; }
+        //// public virtual ICollection<Work> RelatedWorks { get; set; }
     }
 }

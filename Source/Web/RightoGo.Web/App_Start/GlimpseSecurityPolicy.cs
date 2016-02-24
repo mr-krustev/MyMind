@@ -28,5 +28,4 @@ namespace RightoGo.Web
             get { return RuntimeEvent.EndRequest | RuntimeEvent.ExecuteResource; }
         }
     }
-}
-*/
+}*/

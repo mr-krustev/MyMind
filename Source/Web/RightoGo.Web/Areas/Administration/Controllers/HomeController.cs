@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-
-namespace RightoGo.Web.Areas.Administration.Controllers
+﻿namespace RightoGo.Web.Areas.Administration.Controllers
 {
-    public class HomeController : Controller
+    using System.Web.Mvc;
+    using Web.Controllers;
+
+    public class HomeController : BaseController
     {
         // GET: Administration/Home
         public ActionResult Index()
