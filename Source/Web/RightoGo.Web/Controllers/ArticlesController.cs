@@ -38,33 +38,37 @@
         public ActionResult All(int page = 1, int pageSize = 5, string filterByTopic = "", string orderBy = "desc", string sortBy = "date", string searchInput = "")
         {
             IEnumerable<ArticleViewModel> articleData;
-            var topicsData = this.topics.GetAll().To<PagingTopicViewModel>().ToList();
-            topicsData.Insert(0, new PagingTopicViewModel() { Value = string.Empty, Text = "None" });
-            int totalPages;
+            var totalPages = (int)Math.Ceiling(this.articles.GetFilteredAndSearched(filterByTopic, searchInput).Count() / (decimal)pageSize);
 
-            if (this.HttpContext.Cache["All_Articles_" + page + "_" + pageSize + "_" + orderBy + "_" + sortBy] != null
+            if (this.HttpContext != null)
+            {
+                if (this.HttpContext.Cache["All_Articles_" + page + "_" + pageSize + "_" + orderBy + "_" + sortBy] != null
                 && filterByTopic == string.Empty
                 && searchInput == string.Empty)
-            {
-                articleData = (IEnumerable<ArticleViewModel>)this.HttpContext.Cache["All_Articles_" + page + "_" + pageSize + "_" + orderBy + "_" + sortBy];
-                totalPages = (int)this.HttpContext.Cache["All_Articles_" + page + "_" + pageSize + "_" + orderBy + "_" + sortBy + "_TotalPages"];
-            }
-            else if (filterByTopic != string.Empty || searchInput != string.Empty)
-            {
-                articleData = this.articles
-                                   .GetAllPagedFilteredSorted(page, pageSize, filterByTopic, orderBy, sortBy, searchInput)
-                                   .To<ArticleViewModel>().ToList();
-                totalPages = (int)Math.Ceiling(this.articles.GetFilteredAndSearched(filterByTopic, searchInput).Count() / (decimal)pageSize);
+                {
+                    articleData = (IEnumerable<ArticleViewModel>)this.HttpContext.Cache["All_Articles_" + page + "_" + pageSize + "_" + orderBy + "_" + sortBy];
+                }
+                else if (filterByTopic != string.Empty || searchInput != string.Empty)
+                {
+                    articleData = this.articles
+                                       .GetAllPagedFilteredSorted(page, pageSize, filterByTopic, orderBy, sortBy, searchInput)
+                                       .To<ArticleViewModel>().ToList();
+                }
+                else
+                {
+                    articleData = this.articles
+                                        .GetAllPagedFilteredSorted(page, pageSize, filterByTopic, orderBy, sortBy, searchInput)
+                                        .To<ArticleViewModel>().ToList();
+                    totalPages = (int)Math.Ceiling(this.articles.GetFilteredAndSearched(filterByTopic, searchInput).Count() / (decimal)pageSize);
+                    var expiryTime = new TimeSpan(1, 0, 0);
+                    this.HttpContext.Cache.Insert("All_Articles_" + page + "_" + pageSize + "_" + orderBy + "_" + sortBy, articleData, null, DateTime.MaxValue, expiryTime);
+                }
             }
             else
             {
                 articleData = this.articles
                                     .GetAllPagedFilteredSorted(page, pageSize, filterByTopic, orderBy, sortBy, searchInput)
                                     .To<ArticleViewModel>().ToList();
-                totalPages = (int)Math.Ceiling(this.articles.GetFilteredAndSearched(filterByTopic, searchInput).Count() / (decimal)pageSize);
-                var expiryTime = new TimeSpan(1, 0, 0);
-                this.HttpContext.Cache.Insert("All_Articles_" + page + "_" + pageSize + "_" + orderBy + "_" + sortBy, articleData, null, DateTime.MaxValue, expiryTime);
-                this.HttpContext.Cache.Insert("All_Articles_" + page + "_" + pageSize + "_" + orderBy + "_" + sortBy + "_TotalPages", totalPages, null, DateTime.MaxValue, expiryTime);
             }
 
             var viewModel = new AllArticlesViewModel()

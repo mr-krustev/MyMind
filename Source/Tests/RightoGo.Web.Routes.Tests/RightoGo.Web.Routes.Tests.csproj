@@ -95,8 +95,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="JokesRouteTests.cs" />
+    <Compile Include="ArticlesRouteTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PublicStudentsRouteTests.cs" />
+    <Compile Include="PublicTeachersRouteTests.cs" />
+    <Compile Include="UsersRouteTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
