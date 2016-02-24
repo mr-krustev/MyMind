@@ -2,6 +2,12 @@
 @{
     ViewBag.Title = "Home Page";
 }
+
+
+<ul class="breadcrumb">
+    <li class="active">Home</li>
+</ul>
+
 <div class="jumbotron">
     <h1>
         Hello and welcome to RightoGo!
@@ -19,14 +25,15 @@
 {
     <div class="jumbotron">
         <h3>
-            @Html.ActionLink((string)article.Title, "Details", "Articles", new { area = string.Empty, id = article.Id }, null)
+            <b>Title: </b> @Html.ActionLink((string)article.Title, "Details", "Articles", new { area = string.Empty, id = article.Id }, null)
         </h3>
         <br />
         <small>
-            @Html.ActionLink((string)article.Topic.Value, "All", "Articles", new { area = string.Empty, topicFilter = article.Topic.Value }, null)
+            <b>Topic:</b>  @Html.ActionLink((string)article.Topic.Value, "All", "Articles", new { area = string.Empty, topicFilter = article.Topic.Value }, null)
         </small>
         <br />
         <div class="more">
+            <h4>Content</h4>
             @article.Content
         </div>
         <br />

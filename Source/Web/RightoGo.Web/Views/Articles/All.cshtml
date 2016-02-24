@@ -4,7 +4,10 @@
     ViewBag.Title = "All Articles";
 }
 <br />
-@*Add sort/order/filter*@
+<ul class="breadcrumb">
+    <li><a href="@Url.Action("Index","Home", new { area =string.Empty})">Home</a></li>
+    <li class="active">All</li>
+</ul>
 
 @Html.Partial("_SearchPartial", Model.PagingInfo)
 <br />

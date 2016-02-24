@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "Administration";
+}
+
+<ul class="breadcrumb">
+    <li><a href="@Url.Action("Index","Home", new { area =string.Empty})">Home</a></li>
+    <li class="active">Admin</li>
+</ul>
+
+<h1>@ViewBag.Title</h1>
+
+<div class="container">
+    <span>
+        @Html.ActionLink("Administer Articles", "Index", new { area = "Administration", controller = "AdminArticles" }, new { @class = "btn btn-default" })
+        @Html.ActionLink("Administer Universities", "Index", new { area = "Administration", controller = "AdminUniversities" }, new { @class = "btn btn-default" })
+        @Html.ActionLink("Administer Tests", "Index", new { area = "Administration", controller = "AdminTests" }, new { @class = "btn btn-default" })
+        @Html.ActionLink("Administer Topics", "Index", new { area = "Administration", controller = "AdminTopics" }, new { @class = "btn btn-default" })
+        @Html.ActionLink("Administer Works", "Index", new { area = "Administration", controller = "AdminWorks" }, new { @class = "btn btn-default" })
+    </span>
+</div>

@@ -4,6 +4,12 @@
     ViewBag.Title = "Add Work";
 }
 
+<ul class="breadcrumb">
+    <li><a href="@Url.Action("Index","Home", new { area =string.Empty})">Home</a></li>
+    <li><a href="@Url.Action("Index","Works", new { area = "Student" })">Works</a></li>
+    <li class="active">Add</li>
+</ul>
+
 <h2>@ViewBag.Title.</h2>
 @{
     var selectedListUniversities = Model.Topics.Select(u => new SelectListItem() { Text = u.Value, Value = u.Id.ToString() });
@@ -35,7 +41,8 @@
     </div>
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Register" />
+            <input type="submit" class="btn btn-success" value="Add" />
+            <a class="btn btn-primary" href="@Url.Action("Index","Works", new { area = "Student" })">Back</a>
         </div>
     </div>
 }

@@ -3,6 +3,13 @@
     ViewBag.Title = "Details";
 }
 
+
+<ul class="breadcrumb">
+    <li><a href="@Url.Action("Index","Home", new { area =string.Empty})">Home</a></li>
+    <li><a href="@Url.Action("All","Articles", new { area = string.Empty })">Articles</a></li>
+    <li class="active">Details</li>
+</ul>
+
 <div class="jumbotron">
     <h3>
         @Html.ActionLink((string)Model.Title, "Details", "Articles", new { area = string.Empty, id = @Model.Id }, null)
@@ -28,3 +35,5 @@
     }
     <small>@Model.CreatedBy.UserName has writen this on @Model.CreatedOnFormated</small>
 </div>
+
+<a class="btn btn-primary" href="@Url.Action("All","Articles", new { area = string.Empty })">Back</a>

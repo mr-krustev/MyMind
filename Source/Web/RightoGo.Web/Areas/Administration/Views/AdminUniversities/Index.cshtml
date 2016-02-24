@@ -8,6 +8,12 @@
     ViewBag.Title = "Universities Administration";
 }
 
+<ul class="breadcrumb">
+    <li><a href="@Url.Action("Index","Home", new { area =string.Empty})">Home</a></li>
+    <li><a href="@Url.Action("Index", new { area = "Administration", controller="Home" })">Admin</a></li>
+    <li class="active">Administer Universities</li>
+</ul>
+
 <h1>@ViewBag.Title</h1>
 
 @(Html.Kendo().Grid<RightoGo.Web.Areas.Administration.Models.AdmUni.AdminUniversityViewModel>()
@@ -18,7 +24,7 @@
           columns.Bound(c => c.Name);
           columns.Bound(c => c.CreatedOn).Title("Created On");
           columns.Bound(c => c.ModifiedOn).Title("Modified On");
-          columns.Command(command => { command.Edit();  command.Destroy(); }).Width(180);
+          columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
       })
       .ToolBar(toolbar => toolbar.Create())
       .HtmlAttributes(new { style = "height: 400px" })

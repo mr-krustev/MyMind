@@ -214,6 +214,7 @@
     <Compile Include="Areas\Administration\Controllers\AdminTopicsController.cs" />
     <Compile Include="Areas\Administration\Controllers\AdminUniversitiesController.cs" />
     <Compile Include="Areas\Administration\Controllers\AdminWorksController.cs" />
+    <Compile Include="Areas\Administration\Controllers\HomeController.cs" />
     <Compile Include="Areas\Administration\Models\AdmTest\AdminTestCreateModel.cs" />
     <Compile Include="Areas\Administration\Models\AdmTest\AdminTestInputModel.cs" />
     <Compile Include="Areas\Administration\Models\AdmTest\AdminTestViewModel.cs" />
@@ -350,6 +351,7 @@
     <Content Include="Areas\Administration\Views\Shared\_KendoAlertsPartial.cshtml" />
     <Content Include="Areas\Administration\Views\AdminWorks\Index.cshtml" />
     <Content Include="Areas\Administration\Views\AdminTests\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Home\Index.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />

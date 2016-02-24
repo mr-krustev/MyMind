@@ -4,25 +4,33 @@
     ViewBag.Title = "All Works";
 }
 <br />
-@*Add sort/order/filter*@
+<ul class="breadcrumb">
+    <li><a href="@Url.Action("Index","Home", new { area =string.Empty})">Home</a></li>
+    <li class="active">Works</li>
+</ul>
 
 @Html.Partial("_SearchPartial", Model.PagingInfo)
 <br />
 <br />
+
+
 <div class="container">
     @foreach (var work in Model.Works)
     {
         <div class="jumbotron">
             <h3>
-                @Html.ActionLink((string)work.Title, "Details", "Works", new { area = "Student", id = work.Id }, null)
+                <b>Title: </b> @Html.ActionLink((string)work.Title, "Details", "Works", new { area = "Student", id = work.Id }, null)
             </h3>
             <br />
             <small>
-                @Html.ActionLink((string)work.TopicName, "Index", "Works", new { area = "Student", filterByTopic = work.TopicName }, null)
+                <b>Topic: </b> @Html.ActionLink((string)work.TopicName, "Index", "Works", new { area = "Student", filterByTopic = work.TopicName }, null)
             </small>
             <br />
             <div class="more">
-                @Html.Raw(work.SanitizedContent)
+                <h4>Content</h4>
+                <div class="container table-bordered">
+                    @Html.Raw(work.SanitizedContent)
+                </div>
             </div>
             <br />
             <small>@work.CreatedBy.UserName has writen this on @work.CreatedOnFormatted</small>

@@ -8,6 +8,12 @@
     ViewBag.Title = "Tests Administration";
 }
 
+<ul class="breadcrumb">
+    <li><a href="@Url.Action("Index","Home", new { area =string.Empty})">Home</a></li>
+    <li><a href="@Url.Action("Index", new { area = "Administration", controller="Home" })">Admin</a></li>
+    <li class="active">Administer Tests</li>
+</ul>
+
 <h1>@ViewBag.Title</h1>
 
 @(Html.Kendo().Grid<RightoGo.Web.Areas.Administration.Models.AdmTest.AdminTestViewModel>()

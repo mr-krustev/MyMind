@@ -4,6 +4,13 @@
     ViewBag.Title = "Details";
 }
 
+
+<ul class="breadcrumb">
+    <li><a href="@Url.Action("Index","Home", new { area =string.Empty})">Home</a></li>
+    <li><a href="@Url.Action("Index","Works", new { area = "Student" })">Works</a></li>
+    <li class="active">Details</li>
+</ul>
+
 <div class="jumbotron">
     <div class="row">
         <div class="col-md-2 centered table-bordered">
@@ -45,21 +52,26 @@
         </div>
         <div class="col-md-10">
             <h3>
-                @Html.ActionLink((string)Model.Title, "Details", "Works", new { area = "Student", id = Model.Id }, null)
+              <b>Title:</b>  @Html.ActionLink((string)Model.Title, "Details", "Works", new { area = "Student", id = Model.Id }, null)
             </h3>
             <br />
             <small>
-                @Html.ActionLink((string)Model.TopicName, "Index", "Works", new { area = "Student", filterByTopic = Model.TopicName }, null)
+              <b>Topic:</b>   @Html.ActionLink((string)Model.TopicName, "Index", "Works", new { area = "Student", filterByTopic = Model.TopicName }, null)
             </small>
             <br />
             <div class="more">
-                @Html.Raw(Model.SanitizedContent)
+                <h4>Content</h4>
+                <div class="container">
+                    @Html.Raw(Model.SanitizedContent)
+                </div>
             </div>
             <br />
             <small>@Model.CreatedBy.UserName has writen this on @Model.CreatedOnFormatted</small>
         </div>
     </div>
 </div>
+<a class="btn btn-primary" href="@Url.Action("Index","Works", new { area = "Student" })">Back</a>
+
 @section scripts{
     <script>
         $("span[data-action='up']").click(function () {
