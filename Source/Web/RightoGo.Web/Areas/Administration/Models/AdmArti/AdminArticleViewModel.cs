@@ -21,6 +21,10 @@
 
         public string Title { get; set; }
 
+        public string Content { get; set; }
+
+        public string CreatedById { get; set; }
+
         public string TopicName { get; set; }
 
         public string CreatorName { get; set; }

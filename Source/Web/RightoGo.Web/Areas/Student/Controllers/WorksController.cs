@@ -101,6 +101,7 @@
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Add(AddWorkInputModel model)
         {
             if (!this.ModelState.IsValid)
