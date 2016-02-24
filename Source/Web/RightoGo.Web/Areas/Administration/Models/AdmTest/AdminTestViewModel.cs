@@ -24,6 +24,8 @@
 
         public AdminTopicViewModel Topic { get; set; }
 
+        public string TopicName { get; set; }
+
         public string CreatedById { get; set; }
 
         public string CreatorName { get; set; }
@@ -32,7 +34,8 @@
         {
             configuration.CreateMap<Test, AdminTestViewModel>()
                 .ForMember(x => x.CreatorName, opts => opts.MapFrom(x => x.CreatedBy.UserName))
-                .ForMember(x => x.TopicId, opts => opts.MapFrom(x => x.Topic.Id));
+                .ForMember(x => x.TopicId, opts => opts.MapFrom(x => x.Topic.Id))
+                .ForMember(x => x.TopicName, opts => opts.MapFrom(x => x.Topic.Value));
         }
     }
 }

@@ -47,6 +47,7 @@
                 console.log(result.topics);
                 $(result.topics).each(function () {
                     var $this = this;
+
                     $(document.createElement('option'))
                         .attr('value', $this.Id)
                         .text($this.Value)
