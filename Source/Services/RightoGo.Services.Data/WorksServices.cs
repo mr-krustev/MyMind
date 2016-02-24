@@ -31,7 +31,7 @@
 
         public IQueryable<Work> GetAll()
         {
-            throw new NotImplementedException();
+            return this.works.All();
         }
 
         public IQueryable<Work> GetAllPagedSortedOrdered(int page, int pageSize, string orderBy, string sortBy, string filterByTopic, string searchInput)

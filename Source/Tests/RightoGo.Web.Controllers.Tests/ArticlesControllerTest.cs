@@ -7,7 +7,6 @@
 
     using Data.Models;
     using Infrastructure.Mapping;
-    using Microsoft.AspNet.Identity.EntityFramework;
     using Moq;
     using NUnit.Framework;
     using Services.Data.Contracts;
@@ -33,7 +32,6 @@
             var topicsServiceMock = new Mock<ITopicsServices>();
             topicsServiceMock.Setup(x => x.GetAll())
                 .Returns(this.topics.AsQueryable());
-
 
             var controller = new ArticlesController(jokesServiceMock.Object, topicsServiceMock.Object);
             controller.WithCallTo(x => x.All(1, 5, string.Empty, "desc", "date", string.Empty))

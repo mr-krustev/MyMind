@@ -1,0 +1,54 @@
+﻿@using Kendo.Mvc.UI
+
+@section kendo {
+    @Scripts.Render("~/bundles/kendoJS")
+}
+
+@{
+    ViewBag.Title = "Universities Administration";
+}
+
+<h1>@ViewBag.Title</h1>
+
+@(Html.Kendo().Grid<RightoGo.Web.Areas.Administration.Models.AdmWorks.AdminWorkViewModel>()
+      .Name("grid")
+      .Columns(columns =>
+      {
+          columns.Bound(c => c.Title);
+          columns.Bound(c => c.TopicName);
+          columns.Bound(c => c.Content);
+          columns.Bound(c => c.CreatedByUsername);
+          columns.Bound(c => c.CreatedOn);
+          columns.Bound(c => c.ModifiedOn);
+          columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
+      })
+      .ToolBar(toolbar =>
+      {
+          toolbar.Create();
+      })
+       .HtmlAttributes(new { style = "height: 400px" })
+      .ColumnMenu()
+      .Editable(editable =>
+      {
+          editable.Mode(GridEditMode.PopUp);
+          editable.DisplayDeleteConfirmation("Are you completely sure?");
+      })
+      .Pageable()
+      .Sortable(sortable =>
+      {
+          sortable.SortMode(GridSortMode.SingleColumn);
+      })
+      .Scrollable()
+      .DataSource(dataSource => dataSource
+          .Ajax()
+          .Events(events => events.Error("grid_error"))
+          .Events(events => events.RequestEnd("handle_End"))
+          .Model(model => model.Id(p => p.Id))
+          .Read(read => read.Action("Works_Read", "AdminWorks"))
+          .Create(create => create.Action("Works_Create", "AdminWorks"))
+          .Update(update => update.Action("Works_Update", "AdminWorks"))
+          .Destroy(destroy => destroy.Action("Works_Destroy", "AdminWorks"))
+      )
+)
+
+@Html.Partial("_KendoAlertsPartial")

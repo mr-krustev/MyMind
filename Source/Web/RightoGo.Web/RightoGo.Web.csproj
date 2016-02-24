@@ -212,6 +212,7 @@
     <Compile Include="Areas\Administration\Controllers\AdminArticlesController.cs" />
     <Compile Include="Areas\Administration\Controllers\AdminTopicsController.cs" />
     <Compile Include="Areas\Administration\Controllers\AdminUniversitiesController.cs" />
+    <Compile Include="Areas\Administration\Controllers\AdminWorksController.cs" />
     <Compile Include="Areas\Administration\Models\AdmTopic\AdminTopicCreateModel.cs" />
     <Compile Include="Areas\Administration\Models\AdmTopic\AdminTopicInputModel.cs" />
     <Compile Include="Areas\Administration\Models\AdmTopic\AdminTopicViewModel.cs" />
@@ -220,6 +221,7 @@
     <Compile Include="Areas\Administration\Models\AdmArti\ArticleInputModel.cs" />
     <Compile Include="Areas\Administration\Models\AdmArti\ArticleViewModel.cs" />
     <Compile Include="Areas\Administration\Models\AdmUni\AdminUniversityViewModel.cs" />
+    <Compile Include="Areas\Administration\Models\AdmWorks\AdminWorkViewModel.cs" />
     <Compile Include="Areas\Student\Controllers\LikesController.cs" />
     <Compile Include="Areas\Student\Controllers\WorksController.cs" />
     <Compile Include="Areas\Student\Models\AddWorkViewModel.cs" />
@@ -338,6 +340,7 @@
     <Content Include="Areas\Administration\Views\AdminTopics\Index.cshtml" />
     <Content Include="Areas\Administration\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\_KendoAlertsPartial.cshtml" />
+    <Content Include="Areas\Administration\Views\AdminWorks\Index.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />
@@ -577,6 +580,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Student\Views\Votes\" />
     <Folder Include="Views\AdminTopics\" />
+    <Folder Include="Views\AdminWorks\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\Teachers\" />
   </ItemGroup>
