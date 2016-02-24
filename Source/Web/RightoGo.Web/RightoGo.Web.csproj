@@ -218,9 +218,10 @@
     <Compile Include="Areas\Administration\Models\AdmTopic\AdminTopicViewModel.cs" />
     <Compile Include="Areas\Administration\Models\AdmUni\AdminUniversityCreateModel.cs" />
     <Compile Include="Areas\Administration\Models\AdmUni\AdminUniversityInputModel.cs" />
-    <Compile Include="Areas\Administration\Models\AdmArti\ArticleInputModel.cs" />
-    <Compile Include="Areas\Administration\Models\AdmArti\ArticleViewModel.cs" />
+    <Compile Include="Areas\Administration\Models\AdmArti\AdminArticleInputModel.cs" />
+    <Compile Include="Areas\Administration\Models\AdmArti\AdminArticleViewModel.cs" />
     <Compile Include="Areas\Administration\Models\AdmUni\AdminUniversityViewModel.cs" />
+    <Compile Include="Areas\Administration\Models\AdmWorks\AdminWorkInputModel.cs" />
     <Compile Include="Areas\Administration\Models\AdmWorks\AdminWorkViewModel.cs" />
     <Compile Include="Areas\Student\Controllers\LikesController.cs" />
     <Compile Include="Areas\Student\Controllers\WorksController.cs" />
@@ -551,7 +552,7 @@
     <Content Include="Scripts\jquery-2.2.0.min.map" />
     <Content Include="Views\Articles\All.cshtml" />
     <Content Include="Views\Articles\Details.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\ArticleViewModel.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\AdminArticleViewModel.cshtml" />
     <Content Include="Views\Shared\_AdminLinksPartial.cshtml" />
     <Content Include="Views\Shared\_NotificationPartial.cshtml" />
     <Content Include="Views\Shared\_PagingPartial.cshtml" />
@@ -575,12 +576,11 @@
     <Content Include="Views\Shared\_SearchPartial.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\AdminUniversityViewModel.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\AdminTopicViewModel.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\AdminWorkViewModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Student\Views\Votes\" />
-    <Folder Include="Views\AdminTopics\" />
-    <Folder Include="Views\AdminWorks\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\Teachers\" />
   </ItemGroup>

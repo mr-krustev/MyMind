@@ -5,7 +5,7 @@
 }
 
 @{
-    ViewBag.Title = "Universities Administration";
+    ViewBag.Title = "Works Administration";
 }
 
 <h1>@ViewBag.Title</h1>
@@ -16,15 +16,11 @@
       {
           columns.Bound(c => c.Title);
           columns.Bound(c => c.TopicName);
-          columns.Bound(c => c.Content);
-          columns.Bound(c => c.CreatedByUsername);
+          columns.Bound(c => c.SanitizedContent).ClientTemplate("#=Content#");
+          columns.Bound(c => c.CreatorName);
           columns.Bound(c => c.CreatedOn);
           columns.Bound(c => c.ModifiedOn);
           columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
-      })
-      .ToolBar(toolbar =>
-      {
-          toolbar.Create();
       })
        .HtmlAttributes(new { style = "height: 400px" })
       .ColumnMenu()
@@ -45,7 +41,6 @@
           .Events(events => events.RequestEnd("handle_End"))
           .Model(model => model.Id(p => p.Id))
           .Read(read => read.Action("Works_Read", "AdminWorks"))
-          .Create(create => create.Action("Works_Create", "AdminWorks"))
           .Update(update => update.Action("Works_Update", "AdminWorks"))
           .Destroy(destroy => destroy.Action("Works_Destroy", "AdminWorks"))
       )

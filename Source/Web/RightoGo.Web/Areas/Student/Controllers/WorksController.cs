@@ -125,9 +125,8 @@
                 CreatedById = this.User.Identity.GetUserId()
             };
 
-            var workCreated = this.works.Add(newWork).To<WorkViewModel>().FirstOrDefault();
-
-            return this.RedirectToAction("Details", new { id = workCreated.Id });
+            this.works.Add(newWork);
+            return this.RedirectToAction("Details", new { id = newWork.Id });
         }
     }
 }

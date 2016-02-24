@@ -29,14 +29,14 @@
 
         public ActionResult Articles_Read([DataSourceRequest]DataSourceRequest request)
         {
-            var result = this.articles.GetAll().To<ArticleViewModel>();
+            var result = this.articles.GetAll().To<AdminArticleViewModel>();
 
             // return this.Json(result);
             return this.Json(result.ToDataSourceResult(request, this.ModelState));
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Articles_Update([DataSourceRequest]DataSourceRequest request, ArticleInputModel article)
+        public ActionResult Articles_Update([DataSourceRequest]DataSourceRequest request, AdminArticleInputModel article)
         {
             if (this.ModelState.IsValid)
             {
@@ -46,7 +46,7 @@
                 this.articles.Update(entity);
             }
 
-            var result = this.articles.GetById(article.Id).To<ArticleViewModel>().FirstOrDefault();
+            var result = this.articles.GetById(article.Id).To<AdminArticleViewModel>().FirstOrDefault();
             return this.Json(new[] { result }.ToDataSourceResult(request, this.ModelState));
         }
 
@@ -61,7 +61,7 @@
             }
 
             this.articles.Delete(entity);
-            var result = this.articles.GetById(article.Id).To<ArticleViewModel>().FirstOrDefault();
+            var result = this.articles.GetById(article.Id).To<AdminArticleViewModel>().FirstOrDefault();
             return this.Json(new[] { result }.ToDataSourceResult(request, this.ModelState));
         }
 

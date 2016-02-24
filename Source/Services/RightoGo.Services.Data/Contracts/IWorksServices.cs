@@ -16,7 +16,7 @@
 
         void Delete(Work work);
 
-        IQueryable<Work> Add(Work work);
+        void Add(Work work);
 
         IQueryable<Work> GetFilteredAndSearched(string filterByTopic, string searchInput);
     }

@@ -2,7 +2,7 @@
 {
     using System.ComponentModel.DataAnnotations;
 
-    public class ArticleInputModel
+    public class AdminArticleInputModel
     {
         public int Id { get; set; }
 

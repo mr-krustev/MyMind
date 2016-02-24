@@ -22,11 +22,10 @@
             this.sortValues.Add("name", "Title");
         }
 
-        public IQueryable<Work> Add(Work work)
+        public void Add(Work work)
         {
             this.works.Add(work);
             this.works.Save();
-            return this.works.All().Where(w => w.Title == work.Title && w.CreatedById == work.CreatedById && w.Topic.Id == work.Topic.Id);
         }
 
         public IQueryable<Work> GetAll()
@@ -55,7 +54,8 @@
 
         public void Delete(Work work)
         {
-            throw new NotImplementedException();
+            this.works.Delete(work);
+            this.works.Save();
         }
 
         public IQueryable<Work> GetById(int id)
@@ -65,7 +65,8 @@
 
         public void Update(Work work)
         {
-            throw new NotImplementedException();
+            this.works.Update(work);
+            this.works.Save();
         }
 
         public IQueryable<Work> GetFilteredAndSearched(string filterByTopic, string searchInput)

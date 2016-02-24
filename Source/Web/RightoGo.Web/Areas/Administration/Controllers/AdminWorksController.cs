@@ -33,28 +33,7 @@
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Works_Create([DataSourceRequest]DataSourceRequest request, Work work)
-        {
-            var id = 0;
-            if (this.ModelState.IsValid)
-            {
-
-                // Add Work
-                var entity = new Work()
-                {
-
-                };
-
-                this.works.Add(entity);
-                id = entity.Id;
-            }
-
-            var result = this.works.GetById(id).To<AdminWorkViewModel>().FirstOrDefault();
-            return this.Json(new[] { result }.ToDataSourceResult(request, this.ModelState));
-        }
-
-        [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Works_Update([DataSourceRequest]DataSourceRequest request, Work work)
+        public ActionResult Works_Update([DataSourceRequest]DataSourceRequest request, AdminWorkInputModel work)
         {
             if (this.ModelState.IsValid)
             {

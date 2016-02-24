@@ -7,7 +7,7 @@
     using Data.Models;
     using Infrastructure.Mapping;
 
-    public class ArticleViewModel : IMapFrom<Article>, IHaveCustomMappings
+    public class AdminArticleViewModel : IMapFrom<Article>, IHaveCustomMappings
     {
         public int Id { get; set; }
 
@@ -29,7 +29,7 @@
 
         public void CreateMappings(IMapperConfiguration configuration)
         {
-            configuration.CreateMap<Article, ArticleViewModel>()
+            configuration.CreateMap<Article, AdminArticleViewModel>()
                 .ForMember(a => a.CreatorName, opt => opt.MapFrom(x => x.CreatedBy.UserName))
                 .ForMember(a => a.TopicName, opt => opt.MapFrom(x => x.Topic.Value));
         }
